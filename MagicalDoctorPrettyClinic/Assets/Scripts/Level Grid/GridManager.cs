@@ -35,11 +35,11 @@ public class GridManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Placeholder for match detection — will be built out in User Story's [14] and [15].
+    /// Placeholder for match detection — will be built out in [14] and [15].
     /// </summary>
     public void CheckForMatches()
     {
-        // Stub for [14]/[15]
+        // Stub for [14] and [15]
     }
 
     /// <summary>
@@ -47,6 +47,6 @@ public class GridManager : MonoBehaviour
     /// </summary>
     private void ReportMatch(int matchCount)
     {
-        // Stub for [scoring system]
+        // Stub for [9]
     }
 }
