@@ -25,8 +25,7 @@ public class Grid
     {
         return IsValid(x, y) ? gridArray[x, y] : -1;
     }
-
-    // Convert a canvas anchoredPosition back to grid coords
+    
     public Vector2Int GetGridPosition(Vector2 anchoredPos)
     {
         return new Vector2Int(

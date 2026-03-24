@@ -11,8 +11,8 @@ public class GridTest : MonoBehaviour
     public RectTransform parentContainer;
     public GameObject cellPrefab;
 
-    public bool centerGrid = true;       // auto-center in parent
-    public Vector2 manualOffset;         // extra nudge on top of centering
+    public bool centerGrid = true;
+    public Vector2 manualOffset;
 
     private Grid grid;
 
