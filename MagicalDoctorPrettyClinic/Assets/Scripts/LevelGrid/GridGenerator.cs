@@ -8,32 +8,37 @@ public class GridGenerator : MonoBehaviour
     public int height = 10;
     public float cellSize = 50f;
 
-    public Canvas canvas;
     public RectTransform parentContainer;
     public GameObject cellPrefab;
 
     public bool centerGrid = true;
     public Vector2 manualOffset;
 
-    private Grid _grid;
-    private Tile[,] _tiles;
-    
+    public TileType[] possibleTiles;
+
+    private Grid grid;
+
     void Start()
     {
-        _grid = new Grid(width, height, cellSize);
-        _tiles = new Tile[width, height];
+        grid = new Grid(width, height, cellSize);
         GenerateUIGrid();
     }
-    
+
     private void GenerateUIGrid()
     {
         Vector2 gridSize = new Vector2(width * cellSize, height * cellSize);
         Vector2 centerOffset = centerGrid ? new Vector2(-gridSize.x / 2f, -gridSize.y / 2f) : Vector2.zero;
         Vector2 totalOffset = centerOffset + manualOffset;
+
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
+                TileType tileType = GetSafeRandomTile(x, y);
+
+                TileData tileData = new TileData(tileType, new Vector2Int(x, y));
+                grid.SetTile(x, y, tileData);
+
                 GameObject cellObj = Instantiate(cellPrefab, parentContainer);
 
                 RectTransform rect = cellObj.GetComponent<RectTransform>();
@@ -47,45 +52,61 @@ public class GridGenerator : MonoBehaviour
                 rect.anchoredPosition = new Vector2(x * cellSize, y * cellSize) + totalOffset;
                 rect.sizeDelta = new Vector2(cellSize, cellSize);
 
-                Tile tile = cellObj.GetComponent<Tile>();
-                TileType tileType = GetNonMatchingType(x, y);
-                tile.Initialize(x, y, tileType);
-
-                _tiles[x, y] = tile;
-                _grid.SetValue(x, y, (int)tileType);
+                TileVisualiser(cellObj, tileType);
             }
         }
     }
     
-    private TileType GetNonMatchingType(int x, int y)
+    private TileType GetSafeRandomTile(int x, int y)
     {
-        List<TileType> validTypes = new List<TileType>((TileType[])System.Enum.GetValues(typeof(TileType)));
-
+        List<TileType> availableTiles = new List<TileType>(possibleTiles);
+        
         if (x >= 2)
         {
-            TileType leftOne = _tiles[x - 1, y].Type;
-            TileType leftTwo = _tiles[x - 2, y].Type;
+            TileType left1 = grid.GetTile(x - 1, y).type;
+            TileType left2 = grid.GetTile(x - 2, y).type;
 
-            if (leftOne == leftTwo)
-                validTypes.Remove(leftOne);
+            if (left1 == left2)
+            {
+                availableTiles.Remove(left1);
+            }
         }
-
+        
         if (y >= 2)
         {
-            TileType belowOne = _tiles[x, y - 1].Type;
-            TileType belowTwo = _tiles[x, y - 2].Type;
+            TileType down1 = grid.GetTile(x, y - 1).type;
+            TileType down2 = grid.GetTile(x, y - 2).type;
 
-            if (belowOne == belowTwo)
-                validTypes.Remove(belowOne);
+            if (down1 == down2)
+            {
+                availableTiles.Remove(down1);
+            }
         }
-        return validTypes[Random.Range(0, validTypes.Count)];
+
+        return availableTiles[Random.Range(0, availableTiles.Count)];
     }
     
-    public Tile GetTile(int x, int y)
+    private void TileVisualiser(GameObject tile, TileType type)
     {
-        if (x >= 0 && x < width && y >= 0 && y < height)
-            return _tiles[x, y];
+        Image img = tile.GetComponent<Image>();
 
-        return null;
+        switch (type)
+        {
+            case TileType.Cure1:
+                img.color = Color.red;
+                break;
+            case TileType.Cure2:
+                img.color = Color.blue;
+                break;
+            case TileType.Cure3:
+                img.color = Color.green;
+                break;
+            case TileType.Cure4:
+                img.color = Color.yellow;
+                break;
+            case TileType.Cure5:
+                img.color = new Color(0.5f, 0f, 0.5f);
+                break;
+        }
     }
 }

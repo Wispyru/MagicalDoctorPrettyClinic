@@ -5,33 +5,25 @@ public class Grid
     public int width;
     public int height;
     public float cellSize;
-    private int[,] gridArray;
+    private TileData[,] gridArray;
 
     public Grid(int width, int height, float cellSize)
     {
         this.width = width;
         this.height = height;
         this.cellSize = cellSize;
-        gridArray = new int[width, height];
+        gridArray = new TileData[width, height];
     }
 
-    public void SetValue(int x, int y, int value)
+    public void SetTile(int x, int y, TileData tile)
     {
         if (IsValid(x, y))
-            gridArray[x, y] = value;
+            gridArray[x, y] = tile;
     }
 
-    public int GetValue(int x, int y)
+    public TileData GetTile(int x, int y)
     {
-        return IsValid(x, y) ? gridArray[x, y] : -1;
-    }
-    
-    public Vector2Int GetGridPosition(Vector2 anchoredPos)
-    {
-        return new Vector2Int(
-            Mathf.FloorToInt(anchoredPos.x / cellSize),
-            Mathf.FloorToInt(anchoredPos.y / cellSize)
-        );
+        return IsValid(x, y) ? gridArray[x, y] : null;
     }
 
     private bool IsValid(int x, int y)
