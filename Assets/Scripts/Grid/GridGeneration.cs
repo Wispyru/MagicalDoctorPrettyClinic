@@ -77,7 +77,7 @@ public class GridGeneration : MonoBehaviour
     public GameObject GetMedicineAt(int column, int row)
     {
         if(column <  0 || column >= Height || row < 0 || row >= Width) return null;
-        GameObject tile = Grid[row, column];
+        GameObject tile = Grid[column, row];
 
         return tile;
     }
