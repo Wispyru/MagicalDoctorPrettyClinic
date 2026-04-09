@@ -10,9 +10,13 @@ public class GridGeneration : MonoBehaviour
     public GameObject[,] Grid;
     
     private List<MedicineType> _enumValues;
+    private List<GameObject> matchedColumnTiles;
+    private List<GameObject> matchedRowTiles;   
     void Start()
     {
         Grid = new GameObject[Width, Height];
+        matchedColumnTiles = new List<GameObject>();
+        matchedRowTiles = new List<GameObject>();   
         SetUpGrid();
     }
 
@@ -79,4 +83,13 @@ public class GridGeneration : MonoBehaviour
 
         return tile;
     }
+
+
+
+    private void FindColumnMatches(int column, int row, GameObject currentTile)
+    {
+
+    }
+
+
 }
