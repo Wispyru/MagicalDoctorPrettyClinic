@@ -10,13 +10,11 @@ public class GridGeneration : MonoBehaviour
     public GameObject[,] Grid;
     
     private List<MedicineType> _enumValues;
-    private List<GameObject> matchedColumnTiles;
-    private List<GameObject> matchedRowTiles;   
+  
     void Start()
     {
         Grid = new GameObject[Width, Height];
-        matchedColumnTiles = new List<GameObject>();
-        matchedRowTiles = new List<GameObject>();   
+         
         SetUpGrid();
     }
 
@@ -31,16 +29,16 @@ public class GridGeneration : MonoBehaviour
             for (int column = 0; column < Height; column++)
             {
                 CheckTileMatch(column, row);
-                Vector3 temporaryPosition = new Vector3(row, column, 2f);
+                Vector3 temporaryPosition = new Vector3(column, row, 2f);
                 GameObject newTile = Instantiate(TilePrefab, temporaryPosition, Quaternion.identity, transform);
                 MedicineSelect medicineSelect = newTile.AddComponent<MedicineSelect>();
-                medicineSelect.Position = new Vector2Int(row, column);
+                medicineSelect.Position = new Vector2Int(column, row);
 
                 newTile.GetComponent<MedicineData>().Type = _enumValues[Random.Range(0, _enumValues.Count)];
                 newTile.GetComponent<MedicineData>().SetMedicineColor();
 
-                newTile.name = $"({row},{column})";
-                Grid[row, column] = newTile;
+                newTile.name = $"({column},{row})";
+                Grid[column, row] = newTile;
             }
         }
 
@@ -86,10 +84,7 @@ public class GridGeneration : MonoBehaviour
 
 
 
-    private void FindColumnMatches(int column, int row, GameObject currentTile)
-    {
-
-    }
+    
 
 
 }
