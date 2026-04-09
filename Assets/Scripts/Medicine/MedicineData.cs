@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class MedicineData : MonoBehaviour
@@ -9,8 +8,8 @@ public class MedicineData : MonoBehaviour
     /// <summary>
     /// Sets the color of the sprite based on the medicine type
     /// </summary>
-    public void SetMedicineColor() 
-    { 
+    public void SetMedicineColor()
+    {
         //TODO: Change this to the sprites when the time comes.
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 

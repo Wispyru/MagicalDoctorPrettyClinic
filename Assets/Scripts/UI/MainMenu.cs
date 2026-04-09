@@ -6,12 +6,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(1);
     }
-    public void SettingsScreen()
+
+    public void QuitGame()
     {
-        SceneManager.LoadSceneAsync(2);
-    }
-    public void Index()
-    {
-        SceneManager.LoadSceneAsync(3);
+        Application.Quit();
     }
 }
