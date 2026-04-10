@@ -21,11 +21,13 @@ public class GridTileSwapping : MonoBehaviour
         tile1.transform.position = tile2.transform.position;
         tile2.transform.position = newPos;
 
-        bool changesOccured = _gridGeneration.Matching.CheckMatches();
+        _gridGeneration.Matching.CheckForMatches();
+
+        /*
         if (changesOccured)
         {
             StartCoroutine(delaySwitch(tile1, tile2));
-        }
+        }*/
     }
 
     private IEnumerator delaySwitch(GameObject tile1, GameObject tile2)
@@ -34,6 +36,6 @@ public class GridTileSwapping : MonoBehaviour
         tile1.transform.position = tile2.transform.position;
         tile2.transform.position = newPos;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
     }
 }

@@ -45,7 +45,6 @@ public class MedicineSelect : MonoBehaviour
         if (Vector2Int.Distance(GameData.SelectedTile.Position, Position) == 1)
         {
             _tileSwapping.SwapTiles(Position, GameData.SelectedTile.Position);
-            Debug.Log(Position.ToString());
             GameData.SelectedTile.Unselect();
         }
         else
