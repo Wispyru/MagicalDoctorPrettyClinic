@@ -46,6 +46,12 @@ public class MedicineMatch : MonoBehaviour
                 }
             }
         }
+
+        if (matches.Count >= 3)
+        {
+            MatchDestroy(matches); 
+        }
+            
     }
 
 
@@ -80,6 +86,16 @@ public class MedicineMatch : MonoBehaviour
         MedicineData neighbour = _gridGeneration.Grid[x, y].GetComponent<MedicineData>();
         Debug.Log($"neighbour is = {neighbour}");
         neighbours.Add(neighbour);
+    }
+
+    private void MatchDestroy(HashSet<MedicineData> matches )
+    {
+        foreach (MedicineData g in matches)
+        {
+            Debug.Log(g);
+            break;
+        }
+        
     }
 
     private bool IsValid(int r, int c)
