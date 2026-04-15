@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Scripting;
 
@@ -15,65 +16,70 @@ public class MedicineMatch : MonoBehaviour
     public void CheckForMatches(GameObject current)
     {
         Debug.Log("reached.");
-        //var matchCount = 0;
 
 
         HashSet<MedicineData> matches = new HashSet<MedicineData>();
         Stack<MedicineData> checkedList = new Stack<MedicineData>();
 
-        checkedList.Push(current.GetComponent<MedicineData>());
+        MedicineData currentData = current.GetComponent<MedicineData>();
 
+        checkedList.Push(currentData);
+        if (!matches.Contains(currentData))
+        {
+            matches.Add(currentData);
+        }
+        
         while(checkedList.TryPop(out var target))
         {
+            MedicineType targetType = target.Type;
             Debug.Log(target.ToString());
             List<MedicineData> neighbours = GetNeighbours(target.transform);
-
             foreach (MedicineData x in neighbours)
             {
-                Debug.Log($"Current tile = {x.ToString()}");
-                if (!checkedList.TryPop(out target)) continue;
-
-                if (x.Type != target.GetComponent<MedicineData>().Type) return;
-                matches.Add(x);
+                if (checkedList.TryPop(out target)) continue;
                 checkedList.Push(x);
+
+                if (x.Type == targetType)
+                {
+                    matches.Add(x);
+                    break;
+                }
             }
         }
     }
 
+
+
     private List<MedicineData> GetNeighbours(Transform current)
     {
+        int x = (int)current.position.x;
+        int y = (int)current.position.y;
+
+        if (!IsValid(x, y)) return null;
+
         List<MedicineData> collectedNeighbors = new List<MedicineData>();
-        if (!IsValid((int)current.position.x, (int)current.position.y)) return null;
 
-        if (IsValid((int)current.position.x, (int)current.position.y + 1))
-        {
-            MedicineData up = _gridGeneration.Grid[(int)current.position.x, (int)current.position.y + 1].GetComponent<MedicineData>();
-            Debug.Log($"top tile = {up}");
-            collectedNeighbors.Add(up);
-        }
+        Vector2Int[] directions = {
+        new Vector2Int(x, y + 1), // up
+        new Vector2Int(x, y - 1), // down
+        new Vector2Int(x - 1, y),     // left
+        new Vector2Int(x + 1, y),     // right
+    };
 
-        if (IsValid((int)current.position.x, (int)current.position.y - 1))
+        foreach (Vector2Int dir in directions)
         {
-            MedicineData down = _gridGeneration.Grid[(int)current.transform.position.x, (int)current.transform.position.y - 1].GetComponent<MedicineData>();
-            Debug.Log($"bottom tile = {down}");
-            collectedNeighbors.Add(down);
-        }
-
-        if (IsValid((int)current.position.x - 1, (int)current.position.y))
-        {
-            MedicineData left = _gridGeneration.Grid[(int)current.transform.position.x - 1, (int)current.transform.position.y].GetComponent<MedicineData>();
-            Debug.Log($"left tile = {left}");
-            collectedNeighbors.Add(left);
-        }
-
-        if (IsValid((int)current.position.x + 1, (int)current.position.y))
-        {
-            MedicineData right = _gridGeneration.Grid[(int)current.transform.position.x + 1, (int)current.transform.position.y].GetComponent<MedicineData>();
-            Debug.Log($"right tile = {right}");
-            collectedNeighbors.Add(right);
+            if (IsValid(dir.x, dir.y))
+                TryAddNeighbour(dir.x, dir.y, collectedNeighbors);
         }
 
         return collectedNeighbors;
+    }
+
+    private void TryAddNeighbour(int x, int y, List<MedicineData> neighbours)
+    {
+        MedicineData neighbour = _gridGeneration.Grid[x, y].GetComponent<MedicineData>();
+        Debug.Log($"neighbour is = {neighbour}");
+        neighbours.Add(neighbour);
     }
 
     private bool IsValid(int r, int c)
