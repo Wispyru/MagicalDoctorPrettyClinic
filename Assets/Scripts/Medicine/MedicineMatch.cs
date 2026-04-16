@@ -1,27 +1,24 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.Scripting;
 
 public class MedicineMatch : MonoBehaviour
 {
     private GridGeneration _gridGeneration;
     private GridTileSwapping _tileSwapping;
+
     private void Start()
     {
         _gridGeneration = GetComponent<GridGeneration>();
         _tileSwapping = GetComponent<GridTileSwapping>();
     }
-    
-public void CheckForMatches(GameObject current)
-{
+
+    public bool CheckForMatches(GameObject current)
+    {
         Debug.Log("Running check for matches");
 
         MedicineData currentData = current.GetComponent<MedicineData>();
         MedicineType targetType = currentData.Type;
 
-        // Check horizontal and vertical lines separately
         HashSet<MedicineData> horizontalMatches = GetLineMatches(currentData, targetType, true);
         HashSet<MedicineData> verticalMatches = GetLineMatches(currentData, targetType, false);
 
@@ -38,9 +35,10 @@ public void CheckForMatches(GameObject current)
         if (matches.Count >= 3)
         {
             MatchDestroy(matches);
+            return true;
         }
 
-        
+        return false;
     }
 
     private HashSet<MedicineData> GetLineMatches(MedicineData origin, MedicineType targetType, bool horizontal)
@@ -75,22 +73,11 @@ public void CheckForMatches(GameObject current)
                     matches.Add(neighbour);
                     toCheck.Push(neighbour);
                 }
-               
             }
-
         }
 
-        
-    Debug.Log($"Total matches found: {matches.Count}");
-
-    if (matches.Count >= 3)
-    {
-        MatchDestroy(matches);
-    }
         return matches;
     }
-
-
 
     private List<MedicineData> GetNeighbours(Transform current)
     {
@@ -102,11 +89,11 @@ public void CheckForMatches(GameObject current)
         List<MedicineData> collectedNeighbors = new List<MedicineData>();
 
         Vector2Int[] directions = {
-        new Vector2Int(x, y + 1), // up
-        new Vector2Int(x, y - 1), // down
-        new Vector2Int(x - 1, y),     // left
-        new Vector2Int(x + 1, y),     // right
-    };
+            new Vector2Int(x,     y + 1), // up
+            new Vector2Int(x,     y - 1), // down
+            new Vector2Int(x - 1, y),     // left
+            new Vector2Int(x + 1, y),     // right
+        };
 
         foreach (Vector2Int dir in directions)
         {
@@ -120,18 +107,16 @@ public void CheckForMatches(GameObject current)
     private void TryAddNeighbour(int x, int y, List<MedicineData> neighbours)
     {
         MedicineData neighbour = _gridGeneration.Grid[x, y].GetComponent<MedicineData>();
-        //Debug.Log($"neighbour is = {neighbour}");
         neighbours.Add(neighbour);
     }
 
-    private void MatchDestroy(HashSet<MedicineData> matches )
+    private void MatchDestroy(HashSet<MedicineData> matches)
     {
         foreach (MedicineData g in matches)
         {
             g.gameObject.SetActive(false);
         }
         matches.Clear();
-        
     }
 
     private bool IsValid(int r, int c)
