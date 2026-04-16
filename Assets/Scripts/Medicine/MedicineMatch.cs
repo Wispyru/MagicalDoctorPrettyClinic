@@ -114,7 +114,7 @@ public class MedicineMatch : MonoBehaviour
     {
         foreach (MedicineData g in matches)
         {
-            g.gameObject.SetActive(false);
+            GameObject.Destroy(g.gameObject);
         }
         matches.Clear();
     }
