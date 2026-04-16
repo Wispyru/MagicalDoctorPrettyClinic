@@ -5,11 +5,13 @@ public class MedicineMatch : MonoBehaviour
 {
     private GridGeneration _gridGeneration;
     private GridTileSwapping _tileSwapping;
+    private GridCascade _gridCascade;
 
     private void Start()
     {
         _gridGeneration = GetComponent<GridGeneration>();
         _tileSwapping = GetComponent<GridTileSwapping>();
+        _gridCascade = GetComponent<GridCascade>();
     }
 
     public bool CheckForMatches(GameObject current)
@@ -64,7 +66,6 @@ public class MedicineMatch : MonoBehaviour
             {
                 if (!IsValid(dir.x, dir.y)) continue;
 
-                // Skip destroyed/empty slots
                 if (_gridGeneration.Grid[dir.x, dir.y] == null) continue;
 
                 MedicineData neighbour = _gridGeneration.Grid[dir.x, dir.y].GetComponent<MedicineData>();
@@ -122,6 +123,8 @@ public class MedicineMatch : MonoBehaviour
             GameObject.Destroy(g.gameObject);
         }
         matches.Clear();
+
+        _gridCascade.TriggerCascade();
     }
 
     private bool IsValid(int r, int c)
