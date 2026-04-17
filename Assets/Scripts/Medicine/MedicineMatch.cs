@@ -4,20 +4,16 @@ using UnityEngine;
 public class MedicineMatch : MonoBehaviour
 {
     private GridGeneration _gridGeneration;
-    private GridTileSwapping _tileSwapping;
     private GridCascade _gridCascade;
 
     private void Start()
     {
         _gridGeneration = GetComponent<GridGeneration>();
-        _tileSwapping = GetComponent<GridTileSwapping>();
         _gridCascade = GetComponent<GridCascade>();
     }
 
     public bool CheckForMatches(GameObject current)
     {
-        Debug.Log("Running check for matches");
-
         MedicineData currentData = current.GetComponent<MedicineData>();
         MedicineType targetType = currentData.Type;
 
@@ -31,8 +27,6 @@ public class MedicineMatch : MonoBehaviour
 
         if (verticalMatches.Count >= 3)
             matches.UnionWith(verticalMatches);
-
-        Debug.Log($"Total matches found: {matches.Count}");
 
         if (matches.Count >= 3)
         {
@@ -81,37 +75,6 @@ public class MedicineMatch : MonoBehaviour
         }
 
         return matches;
-    }
-
-    private List<MedicineData> GetNeighbours(Transform current)
-    {
-        int x = (int)current.position.x;
-        int y = (int)current.position.y;
-
-        if (!IsValid(x, y)) return null;
-
-        List<MedicineData> collectedNeighbors = new List<MedicineData>();
-
-        Vector2Int[] directions = {
-            new Vector2Int(x,     y + 1), // up
-            new Vector2Int(x,     y - 1), // down
-            new Vector2Int(x - 1, y),     // left
-            new Vector2Int(x + 1, y),     // right
-        };
-
-        foreach (Vector2Int dir in directions)
-        {
-            if (IsValid(dir.x, dir.y))
-                TryAddNeighbour(dir.x, dir.y, collectedNeighbors);
-        }
-
-        return collectedNeighbors;
-    }
-
-    private void TryAddNeighbour(int x, int y, List<MedicineData> neighbours)
-    {
-        MedicineData neighbour = _gridGeneration.Grid[x, y].GetComponent<MedicineData>();
-        neighbours.Add(neighbour);
     }
 
     private void MatchDestroy(HashSet<MedicineData> matches)
