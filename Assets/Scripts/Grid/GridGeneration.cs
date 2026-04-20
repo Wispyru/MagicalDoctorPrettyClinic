@@ -7,12 +7,15 @@ public class GridGeneration : MonoBehaviour
     public int Width;
     public int Height;
     public GameObject TilePrefab;
+    public GameObject[,] Grid;
+    public MedicineMatch Matching;
 
-    private GameObject[,] _grid;
     private List<MedicineType> _enumValues;
+
     void Start()
     {
-        _grid = new GameObject[Width, Height];
+        Grid = new GameObject[Width, Height];
+        Matching = GetComponent<MedicineMatch>();
         SetUpGrid();
     }
 
@@ -21,34 +24,51 @@ public class GridGeneration : MonoBehaviour
     /// </summary>
     private void SetUpGrid()
     {
-
-        for (int row = 0; row < Width; row++)
+        for (int column = 0; column < Width; column++)
         {
-            for (int column = 0; column < Height; column++)
+            for (int row = 0; row < Height; row++)
             {
                 CheckTileMatch(column, row);
-                Vector3 temporaryPosition = new Vector3(row, column, 2f);
-                GameObject newTile = Instantiate(TilePrefab, temporaryPosition, Quaternion.identity, transform);
-                newTile.GetComponent<MedicineData>().Type = _enumValues[Random.Range(0, _enumValues.Count)];
-                newTile.GetComponent<MedicineData>().SetMedicineColor();
-                newTile.name = $"({row},{column})";
-                _grid[row, column] = newTile;
+                SpawnTile(column, row);
             }
         }
     }
 
     /// <summary>
-    /// Checks the medicine tiles next to the current medicine tile.
+    /// Spawns a single tile at the given column and row, starting from the buffer position if provided.
     /// </summary>
-    /// <param name="column"></param>
-    /// <param name="row"></param>
+    public void SpawnTile(int column, int row, Vector3? bufferPosition = null)
+    {
+        Vector3 spawnPosition = bufferPosition.HasValue
+            ? bufferPosition.Value
+            : new Vector3(column, row, 2f);
+
+        GameObject newTile = Instantiate(TilePrefab, spawnPosition, Quaternion.identity, transform);
+        MedicineSelect medicineSelect = newTile.AddComponent<MedicineSelect>();
+        medicineSelect.Position = new Vector2Int(column, row);
+
+        MedicineData medicineData = newTile.GetComponent<MedicineData>();
+        medicineData.Type = _enumValues[Random.Range(0, _enumValues.Count)];
+        medicineData.SetMedicineColor();
+
+        if (bufferPosition.HasValue)
+            newTile.GetComponent<SpriteRenderer>().enabled = false;
+
+        newTile.name = $"({column},{row})";
+        Grid[column, row] = newTile;
+    }
+
+    /// <summary>
+    /// Checks the medicine tiles next to the current medicine tile to ensure no matches are made when generating grid.
+    /// </summary>
     public void CheckTileMatch(int column, int row)
     {
+        _enumValues = System.Enum.GetValues(typeof(MedicineType)).Cast<MedicineType>().ToList();
+
         GameObject left1 = GetMedicineAt(column - 1, row);
         GameObject left2 = GetMedicineAt(column - 2, row);
-        _enumValues = System.Enum.GetValues(typeof(MedicineType)).Cast<MedicineType>().ToList();
-        if (left2 != null && left1.GetComponent<MedicineData>().Type == left2.GetComponent<MedicineData>().Type) 
-        { 
+        if (left2 != null && left1.GetComponent<MedicineData>().Type == left2.GetComponent<MedicineData>().Type)
+        {
             _enumValues.Remove(left1.GetComponent<MedicineData>().Type);
         }
 
@@ -58,20 +78,15 @@ public class GridGeneration : MonoBehaviour
         {
             _enumValues.Remove(down1.GetComponent<MedicineData>().Type);
         }
-        
     }
 
     /// <summary>
-    /// Gets the medicine tile.
+    /// Gets the medicine tile at the given column and row.
     /// </summary>
-    /// <param name="column"></param>
-    /// <param name="row"></param>
-    /// <returns></returns>
     public GameObject GetMedicineAt(int column, int row)
     {
-        if(column <  0 || column >= Height || row < 0 || row >= Width) return null;
-        GameObject tile = _grid[row, column];
-
-        return tile;
+        if (column < 0 || column >= Width
+            || row < 0 || row >= Height) return null;
+        return Grid[column, row];
     }
 }

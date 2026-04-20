@@ -3,7 +3,9 @@ using UnityEngine;
 public class MedicineData : MonoBehaviour
 {
     //public variables
+    // quick fix comment
     public MedicineType Type;
+    public Sprite[] sprites;
 
     /// <summary>
     /// Sets the color of the sprite based on the medicine type
@@ -16,19 +18,19 @@ public class MedicineData : MonoBehaviour
         switch (Type)
         {
             case MedicineType.MedicineType1:
-                spriteRenderer.color = Color.red;
+                spriteRenderer.sprite = sprites[0];
                 break;
             case MedicineType.MedicineType2:
-                spriteRenderer.color = Color.green;
+                spriteRenderer.sprite = sprites[1];
                 break;
             case MedicineType.MedicineType3:
-                spriteRenderer.color = Color.blue;
+                spriteRenderer.sprite = sprites[2];
                 break;
             case MedicineType.MedicineType4:
-                spriteRenderer.color = Color.yellow;
+                spriteRenderer.sprite = sprites[3];
                 break;
             case MedicineType.MedicineType5:
-                spriteRenderer.color = Color.purple;
+                spriteRenderer.sprite = sprites[4];
                 break;
         }
     }
