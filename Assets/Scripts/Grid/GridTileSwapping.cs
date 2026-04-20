@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class GridTileSwapping : MonoBehaviour
 {
-    [SerializeField]
     private GameObject _gridObject;
 
     private GridGeneration _gridGeneration;
@@ -11,6 +10,8 @@ public class GridTileSwapping : MonoBehaviour
     private void Start()
     {
         _gridGeneration = FindAnyObjectByType<GridGeneration>();
+
+        _gridObject = _gridGeneration.gameObject;
     }
 
     public void SwapTiles(Vector2Int tile1Position, Vector2Int tile2Position)

@@ -131,6 +131,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 322965263387639069, guid: b4af4b2883d99b040b9741482c9a77a8, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 791051680}
+    - target: {fileID: 322965263387639069, guid: b4af4b2883d99b040b9741482c9a77a8, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2397505102131094724, guid: b4af4b2883d99b040b9741482c9a77a8, type: 3}
       propertyPath: m_text
       value: 'Unlock level 3
