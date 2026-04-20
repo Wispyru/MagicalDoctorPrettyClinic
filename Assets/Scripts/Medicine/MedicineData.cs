@@ -3,6 +3,7 @@ using UnityEngine;
 public class MedicineData : MonoBehaviour
 {
     //public variables
+    // quick fix comment
     public MedicineType Type;
     public Sprite[] sprites;
 

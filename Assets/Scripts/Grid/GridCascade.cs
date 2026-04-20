@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class GridCascade : MonoBehaviour
 {
-    [SerializeField]
-    private float _fallDuration = 0.3f;
+    private float _fallSpeed = 10f;
 
     private GridGeneration _gridGeneration;
     private MedicineMatch _medicineMatch;
@@ -31,11 +30,11 @@ public class GridCascade : MonoBehaviour
     {
         GameData.IsAnimating = true;
 
-        yield return StartCoroutine(DropTiles());
+        List<(GameObject tile, Vector3 startPos, Vector3 endPos)> fallingTiles = CompactColumns();
 
-        FillEmptySlots();
+        FillEmptySlots(fallingTiles);
 
-        yield return StartCoroutine(WaitForFill());
+        yield return StartCoroutine(AnimateFall(fallingTiles));
 
         GameData.IsAnimating = false;
 
@@ -43,93 +42,128 @@ public class GridCascade : MonoBehaviour
     }
 
     /// <summary>
-    /// Drops existing tiles down to fill empty slots in each column, animating the movement.
+    /// Compacts each column by shifting all existing tiles down to fill gaps.
+    /// Returns a list of tiles that need to be animated.
     /// </summary>
-    private IEnumerator DropTiles()
+    private List<(GameObject tile, Vector3 startPos, Vector3 endPos)> CompactColumns()
     {
-        List<(GameObject tile, Vector3 startPos, Vector3 endPos)> fallingTiles 
+        List<(GameObject tile, Vector3 startPos, Vector3 endPos)> fallingTiles
             = new List<(GameObject, Vector3, Vector3)>();
 
         for (int column = 0; column < _gridGeneration.Width; column++)
         {
+            List<GameObject> columnTiles = new List<GameObject>();
             for (int row = 0; row < _gridGeneration.Height; row++)
             {
-                if (_gridGeneration.Grid[column, row] != null) continue;
+                if (_gridGeneration.Grid[column, row] != null)
+                    columnTiles.Add(_gridGeneration.Grid[column, row]);
+            }
 
-                for (int rowAbove = row + 1; rowAbove < _gridGeneration.Height; rowAbove++)
-                {
-                    if (_gridGeneration.Grid[column, rowAbove] == null) continue;
+            for (int row = 0; row < _gridGeneration.Height; row++)
+                _gridGeneration.Grid[column, row] = null;
 
-                    GameObject tile = _gridGeneration.Grid[column, rowAbove];
-                    Vector3 targetPos = new Vector3(column, row, 2f);
+            for (int i = 0; i < columnTiles.Count; i++)
+            {
+                GameObject tile = columnTiles[i];
+                Vector3 startPos = tile.transform.position;
+                Vector3 endPos = new Vector3(column, i, 2f);
 
-                    // Update grid array and tile data
-                    _gridGeneration.Grid[column, row] = tile;
-                    _gridGeneration.Grid[column, rowAbove] = null;
-                    tile.GetComponent<MedicineSelect>().Position = new Vector2Int(column, row);
-                    tile.name = $"({column},{row})";
+                _gridGeneration.Grid[column, i] = tile;
+                tile.GetComponent<MedicineSelect>().Position = new Vector2Int(column, i);
+                tile.name = $"({column},{i})";
 
-                    fallingTiles.Add((tile, tile.transform.position, targetPos));
-                    break;
-                }
+                if (startPos != endPos)
+                    fallingTiles.Add((tile, startPos, endPos));
             }
         }
 
-        yield return StartCoroutine(AnimateFall(fallingTiles));
+        return fallingTiles;
     }
 
     /// <summary>
-    /// Animates all falling tiles simultaneously from their start to end positions.
+    /// Fills any remaining empty slots at the top of each column with new buffer tiles.
+    /// All tiles spawn from just above the grid so lower targets fall further and land last.
+    /// </summary>
+    private void FillEmptySlots(List<(GameObject tile, Vector3 startPos, Vector3 endPos)> fallingTiles)
+    {
+        for (int column = 0; column < _gridGeneration.Width; column++)
+        {
+            List<int> emptyRows = new List<int>();
+            for (int row = 0; row < _gridGeneration.Height; row++)
+            {
+                if (_gridGeneration.Grid[column, row] == null)
+                    emptyRows.Add(row);
+            }
+
+            int emptyCount = emptyRows.Count;
+            if (emptyCount == 0) continue;
+
+            for (int i = 0; i < emptyCount; i++)
+            {
+                int targetRow = emptyRows[i];
+
+                // All tiles spawn from the same point just above the grid
+                // Lower target rows fall further so they land last, filling bottom-up naturally
+                Vector3 spawnPos = new Vector3(column, _gridGeneration.Height + i, 2f);
+                Vector3 endPos = new Vector3(column, targetRow, 2f);
+
+                _gridGeneration.CheckTileMatch(column, targetRow);
+                _gridGeneration.SpawnTile(column, targetRow, bufferPosition: spawnPos);
+
+                GameObject newTile = _gridGeneration.Grid[column, targetRow];
+                fallingTiles.Add((newTile, spawnPos, endPos));
+            }
+        }
+    }
+
+    /// <summary>
+    /// Animates all falling tiles simultaneously, each at a speed proportional to the distance they travel.
     /// </summary>
     private IEnumerator AnimateFall(List<(GameObject tile, Vector3 startPos, Vector3 endPos)> fallingTiles)
     {
+        foreach (var (tile, _, _) in fallingTiles)
+        {
+            if (tile == null) continue;
+            tile.GetComponent<SpriteRenderer>().enabled = true;
+        }
+
+        // Calculate individual duration per tile based on distance and fall speed
+        List<float> durations = new List<float>();
+        float longestDuration = 0f;
+
+        foreach (var (tile, startPos, endPos) in fallingTiles)
+        {
+            float distance = Vector3.Distance(startPos, endPos);
+            float duration = distance / _fallSpeed;
+            durations.Add(duration);
+
+            if (duration > longestDuration)
+                longestDuration = duration;
+        }
+
         float elapsed = 0f;
 
-        while (elapsed < _fallDuration)
+        while (elapsed < longestDuration)
         {
             elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / _fallDuration);
 
-            foreach (var (tile, startPos, endPos) in fallingTiles)
+            for (int i = 0; i < fallingTiles.Count; i++)
             {
+                var (tile, startPos, endPos) = fallingTiles[i];
                 if (tile == null) continue;
+
+                float t = Mathf.Clamp01(elapsed / durations[i]);
                 tile.transform.position = Vector3.Lerp(startPos, endPos, t);
             }
 
             yield return null;
         }
 
-        // Snap to final positions
         foreach (var (tile, _, endPos) in fallingTiles)
         {
             if (tile == null) continue;
             tile.transform.position = endPos;
         }
-    }
-
-    /// <summary>
-    /// Fills any remaining empty slots at the top of each column with new tiles.
-    /// </summary>
-    private void FillEmptySlots()
-    {
-        for (int column = 0; column < _gridGeneration.Width; column++)
-        {
-            for (int row = 0; row < _gridGeneration.Height; row++)
-            {
-                if (_gridGeneration.Grid[column, row] != null) continue;
-
-                _gridGeneration.CheckTileMatch(column, row);
-                _gridGeneration.SpawnTile(column, row);
-            }
-        }
-    }
-
-    /// <summary>
-    /// Small wait to ensure newly spawned tiles are ready before checking matches.
-    /// </summary>
-    private IEnumerator WaitForFill()
-    {
-        yield return null;
     }
 
     /// <summary>
