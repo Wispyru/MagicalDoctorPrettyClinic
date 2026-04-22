@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GridCascade : MonoBehaviour
 {
+    [SerializeField]
     private float _fallSpeed = 10f;
 
     private GridGeneration _gridGeneration;
@@ -66,7 +67,7 @@ public class GridCascade : MonoBehaviour
             {
                 GameObject tile = columnTiles[i];
                 Vector3 startPos = tile.transform.position;
-                Vector3 endPos = new Vector3(column, i, 2f);
+                Vector3 endPos = _gridGeneration.GetWorldPosition(column, i);
 
                 _gridGeneration.Grid[column, i] = tile;
                 tile.GetComponent<MedicineSelect>().Position = new Vector2Int(column, i);
@@ -82,7 +83,6 @@ public class GridCascade : MonoBehaviour
 
     /// <summary>
     /// Fills any remaining empty slots at the top of each column with new buffer tiles.
-    /// All tiles spawn from just above the grid so lower targets fall further and land last.
     /// </summary>
     private void FillEmptySlots(List<(GameObject tile, Vector3 startPos, Vector3 endPos)> fallingTiles)
     {
@@ -102,10 +102,8 @@ public class GridCascade : MonoBehaviour
             {
                 int targetRow = emptyRows[i];
 
-                // All tiles spawn from the same point just above the grid
-                // Lower target rows fall further so they land last, filling bottom-up naturally
-                Vector3 spawnPos = new Vector3(column, _gridGeneration.Height + i, 2f);
-                Vector3 endPos = new Vector3(column, targetRow, 2f);
+                Vector3 spawnPos = _gridGeneration.GetWorldPosition(column, _gridGeneration.Height + i);
+                Vector3 endPos = _gridGeneration.GetWorldPosition(column, targetRow);
 
                 _gridGeneration.CheckTileMatch(column, targetRow);
                 _gridGeneration.SpawnTile(column, targetRow, bufferPosition: spawnPos);
@@ -127,7 +125,6 @@ public class GridCascade : MonoBehaviour
             tile.GetComponent<SpriteRenderer>().enabled = true;
         }
 
-        // Calculate individual duration per tile based on distance and fall speed
         List<float> durations = new List<float>();
         float longestDuration = 0f;
 

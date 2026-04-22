@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class GridTileSwapping : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _gridObject;
-
     private GridGeneration _gridGeneration;
 
     private void Start()
@@ -13,6 +10,9 @@ public class GridTileSwapping : MonoBehaviour
         _gridGeneration = FindAnyObjectByType<GridGeneration>();
     }
 
+    /// <summary>
+    /// Swaps two tiles and reverts if no match is made.
+    /// </summary>
     public void SwapTiles(Vector2Int tile1Position, Vector2Int tile2Position)
     {
         GameObject tile1 = _gridGeneration.Grid[tile1Position.x, tile1Position.y];
@@ -29,11 +29,13 @@ public class GridTileSwapping : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Performs the swap of two tiles in both world space and the grid array.
+    /// </summary>
     private void PerformSwap(GameObject tile1, GameObject tile2, Vector2Int tile1Position, Vector2Int tile2Position)
     {
-        Vector2 tile1WorldPos = tile1.transform.position;
-        tile1.transform.position = tile2.transform.position;
-        tile2.transform.position = tile1WorldPos;
+        tile1.transform.position = _gridGeneration.GetWorldPosition(tile2Position.x, tile2Position.y);
+        tile2.transform.position = _gridGeneration.GetWorldPosition(tile1Position.x, tile1Position.y);
 
         _gridGeneration.Grid[tile1Position.x, tile1Position.y] = tile2;
         _gridGeneration.Grid[tile2Position.x, tile2Position.y] = tile1;

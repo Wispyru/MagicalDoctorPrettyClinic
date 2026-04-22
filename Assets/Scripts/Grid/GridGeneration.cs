@@ -10,6 +10,12 @@ public class GridGeneration : MonoBehaviour
     public GameObject[,] Grid;
     public MedicineMatch Matching;
 
+    [SerializeField]
+    private float _cellSize = 1f;
+
+    [SerializeField]
+    private Vector2 _gridOrigin = Vector2.zero;
+
     private List<MedicineType> _enumValues;
 
     void Start()
@@ -17,6 +23,16 @@ public class GridGeneration : MonoBehaviour
         Grid = new GameObject[Width, Height];
         Matching = GetComponent<MedicineMatch>();
         SetUpGrid();
+    }
+
+    /// <summary>
+    /// Converts a grid index to a world position using cell size and grid origin.
+    /// </summary>
+    public Vector3 GetWorldPosition(int column, int row)
+    {
+        float x = _gridOrigin.x + column * _cellSize;
+        float y = _gridOrigin.y + row * _cellSize;
+        return new Vector3(x, y, 2f);
     }
 
     /// <summary>
@@ -41,7 +57,7 @@ public class GridGeneration : MonoBehaviour
     {
         Vector3 spawnPosition = bufferPosition.HasValue
             ? bufferPosition.Value
-            : new Vector3(column, row, 2f);
+            : GetWorldPosition(column, row);
 
         GameObject newTile = Instantiate(TilePrefab, spawnPosition, Quaternion.identity, transform);
         MedicineSelect medicineSelect = newTile.AddComponent<MedicineSelect>();
