@@ -7,7 +7,9 @@ public class LoadLevelData : MonoBehaviour
 
     public void LoadLevel()
     {
-        GameData.CurrentTimeInSeconds = LevelDataObject.MaxTimeInSeconds;
-        GameData.CurrentMoves = LevelDataObject.MaximumMoves;
+        GameData.CurrentTimeInSeconds = LevelDataObject.MaxTime;
+        GameData.CurrentMoves = LevelDataObject.MaxMoves;
+        
+        Debug.Log(GameData.CurrentMoves);
     }
 }

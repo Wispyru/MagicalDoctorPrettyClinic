@@ -6,7 +6,8 @@ public class MedicineData : MonoBehaviour
     // quick fix comment
     public MedicineType Type;
     public Sprite[] sprites;
-
+    public int Points;
+    
     /// <summary>
     /// Sets the color of the sprite based on the medicine type
     /// </summary>

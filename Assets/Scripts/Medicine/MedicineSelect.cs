@@ -16,7 +16,7 @@ public class MedicineSelect : MonoBehaviour
         _renderer = GetComponent<SpriteRenderer>();
         _tileSwapping = GetComponent<GridTileSwapping>();
         _originalScale = new Vector3(gameObject.transform.localScale.x, gameObject.transform.localScale.y, 1);
-        _selectedScale = new Vector3(0.275f, 0.275f, 1);
+        _selectedScale = new Vector3(0.55f, 0.55f, 1);
 
     }
 

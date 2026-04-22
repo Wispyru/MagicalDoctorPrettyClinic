@@ -1,11 +1,9 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "LevelData", menuName = "Levels/DataObject")]
+[CreateAssetMenu(fileName = "LevelData", menuName = "ScriptableObjects/LevelData")]
 public class LevelData : ScriptableObject
 {
-    public float MaxTimeInSeconds;
-    public int MaximumMoves;
-    public int PointsNeeded;
-    
-    
+    public float MaxTime;
+    public int MaxMoves;
+    public float ComboWindow;
 }

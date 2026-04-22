@@ -113,6 +113,7 @@ MonoBehaviour:
   - {fileID: 6761737615975354716, guid: fb3b9130fad929e498483b94e95df459, type: 3}
   - {fileID: 9068799368527593230, guid: 8c0e67a74f9161045841a5d0b2f09496, type: 3}
   - {fileID: -827574650542409969, guid: 75b51247bf1b8cc44bc74f870570f30d, type: 3}
+  Points: 5
 --- !u!61 &8307675076691570064
 BoxCollider2D:
   m_ObjectHideFlags: 0

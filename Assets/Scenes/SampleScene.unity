@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ea47725dad7314bb7100862daaba5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MedicineMatch
+  _levelData: {fileID: 11400000, guid: 7f02ded95bfe6e9428be92f98ac0b8f5, type: 2}
 --- !u!114 &71264141
 MonoBehaviour:
   m_ObjectHideFlags: 0

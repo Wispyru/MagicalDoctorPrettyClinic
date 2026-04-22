@@ -1,17 +1,23 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MedicineMatch : MonoBehaviour
 {
+    [SerializeField]
+    private LevelData _levelData;
+
     private GridGeneration _gridGeneration;
-    private GridTileSwapping _tileSwapping;
     private GridCascade _gridCascade;
+
+    private int _matchComboCount;
+    private Coroutine _comboTimerCoroutine;
 
     private void Start()
     {
         _gridGeneration = GetComponent<GridGeneration>();
-        _tileSwapping = GetComponent<GridTileSwapping>();
         _gridCascade = GetComponent<GridCascade>();
+        _matchComboCount = 1;
     }
 
     /// <summary>
@@ -35,11 +41,56 @@ public class MedicineMatch : MonoBehaviour
 
         if (matches.Count >= 3)
         {
+            int points = CalculatePoints(matches, currentData);
+            GameData.CurrentPoints += points;
+
             MatchDestroy(matches);
+            HandleCombo();
             return true;
         }
 
         return false;
+    }
+
+    /// <summary>
+    /// Increments the combo count, updates GameData, and restarts the combo timer.
+    /// </summary>
+    private void HandleCombo()
+    {
+        _matchComboCount++;
+        GameData.CurrentComboCount = _matchComboCount;
+
+        if (_comboTimerCoroutine != null)
+            StopCoroutine(_comboTimerCoroutine);
+
+        _comboTimerCoroutine = StartCoroutine(ComboTimerRoutine());
+    }
+
+    /// <summary>
+    /// Waits for the combo window to expire and then resets the combo count.
+    /// </summary>
+    private IEnumerator ComboTimerRoutine()
+    {
+        yield return new WaitForSeconds(_levelData.ComboWindow);
+        ResetCombo();
+    }
+
+    /// <summary>
+    /// Resets the combo count back to 1 and updates GameData.
+    /// </summary>
+    private void ResetCombo()
+    {
+        _matchComboCount = 1;
+        GameData.CurrentComboCount = _matchComboCount;
+        _comboTimerCoroutine = null;
+    }
+
+    /// <summary>
+    /// Calculates the points for a match, multiplied by the current combo count.
+    /// </summary>
+    private int CalculatePoints(HashSet<MedicineData> matches, MedicineData target)
+    {
+        return target.Points * matches.Count * _matchComboCount;
     }
 
     /// <summary>
@@ -57,7 +108,6 @@ public class MedicineMatch : MonoBehaviour
         {
             MedicineData target = toCheck.Pop();
 
-            // Use MedicineSelect.Position instead of transform.position for grid lookups
             Vector2Int pos = target.GetComponent<MedicineSelect>().Position;
 
             Vector2Int[] directions = horizontal
