@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.07609, z: -3}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,11 +108,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   Type: 0
   sprites:
-  - {fileID: 5149635862194096708, guid: 629851475e78d924c9b5b569c6dcf227, type: 3}
-  - {fileID: 8696208057948501208, guid: 629851475e78d924c9b5b569c6dcf227, type: 3}
-  - {fileID: -2978663452529186286, guid: 629851475e78d924c9b5b569c6dcf227, type: 3}
-  - {fileID: 4506666753735848290, guid: 629851475e78d924c9b5b569c6dcf227, type: 3}
-  - {fileID: -6597278178311427093, guid: 629851475e78d924c9b5b569c6dcf227, type: 3}
+  - {fileID: 5357667892696785996, guid: 763a545e6d01b044eb8e52415935f1f1, type: 3}
+  - {fileID: -1099226531044006708, guid: de47de752a8716941bfa07bcd636f1d5, type: 3}
+  - {fileID: 6761737615975354716, guid: fb3b9130fad929e498483b94e95df459, type: 3}
+  - {fileID: 9068799368527593230, guid: 8c0e67a74f9161045841a5d0b2f09496, type: 3}
+  - {fileID: -827574650542409969, guid: 75b51247bf1b8cc44bc74f870570f30d, type: 3}
 --- !u!61 &8307675076691570064
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -171,4 +171,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55709bb355217094ba8242b71dcaae34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridTileSwapping
-  _gridObject: {fileID: 0}
