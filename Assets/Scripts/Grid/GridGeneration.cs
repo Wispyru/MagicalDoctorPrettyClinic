@@ -10,6 +10,12 @@ public class GridGeneration : MonoBehaviour
     public GameObject[,] Grid;
     public MedicineMatch Matching;
 
+    [SerializeField]
+    private float _cellSize = 1f;
+
+    [SerializeField]
+    private Vector2 _gridOrigin = Vector2.zero;
+
     private List<MedicineType> _enumValues;
 
     void Start()
@@ -20,13 +26,23 @@ public class GridGeneration : MonoBehaviour
     }
 
     /// <summary>
+    /// Converts a grid index to a world position using cell size and grid origin.
+    /// </summary>
+    public Vector3 GetWorldPosition(int column, int row)
+    {
+        float x = _gridOrigin.x + column * _cellSize;
+        float y = _gridOrigin.y + row * _cellSize;
+        return new Vector3(x, y, 2f);
+    }
+
+    /// <summary>
     /// Generates the grid where we will spawn in the medicine.
     /// </summary>
     private void SetUpGrid()
     {
-        for (int row = 0; row < Width; row++)
+        for (int column = 0; column < Width; column++)
         {
-            for (int column = 0; column < Height; column++)
+            for (int row = 0; row < Height; row++)
             {
                 CheckTileMatch(column, row);
                 SpawnTile(column, row);
@@ -35,17 +51,24 @@ public class GridGeneration : MonoBehaviour
     }
 
     /// <summary>
-    /// Spawns a single tile at the given column and row.
+    /// Spawns a single tile at the given column and row, starting from the buffer position if provided.
     /// </summary>
-    public void SpawnTile(int column, int row)
+    public void SpawnTile(int column, int row, Vector3? bufferPosition = null)
     {
-        Vector3 temporaryPosition = new Vector3(column, row, 2f);
-        GameObject newTile = Instantiate(TilePrefab, temporaryPosition, Quaternion.identity, transform);
+        Vector3 spawnPosition = bufferPosition.HasValue
+            ? bufferPosition.Value
+            : GetWorldPosition(column, row);
+
+        GameObject newTile = Instantiate(TilePrefab, spawnPosition, Quaternion.identity, transform);
         MedicineSelect medicineSelect = newTile.AddComponent<MedicineSelect>();
         medicineSelect.Position = new Vector2Int(column, row);
 
-        newTile.GetComponent<MedicineData>().Type = _enumValues[Random.Range(0, _enumValues.Count)];
-        newTile.GetComponent<MedicineData>().SetMedicineColor();
+        MedicineData medicineData = newTile.GetComponent<MedicineData>();
+        medicineData.Type = _enumValues[Random.Range(0, _enumValues.Count)];
+        medicineData.SetMedicineColor();
+
+        if (bufferPosition.HasValue)
+            newTile.GetComponent<SpriteRenderer>().enabled = false;
 
         newTile.name = $"({column},{row})";
         Grid[column, row] = newTile;
@@ -56,9 +79,10 @@ public class GridGeneration : MonoBehaviour
     /// </summary>
     public void CheckTileMatch(int column, int row)
     {
+        _enumValues = System.Enum.GetValues(typeof(MedicineType)).Cast<MedicineType>().ToList();
+
         GameObject left1 = GetMedicineAt(column - 1, row);
         GameObject left2 = GetMedicineAt(column - 2, row);
-        _enumValues = System.Enum.GetValues(typeof(MedicineType)).Cast<MedicineType>().ToList();
         if (left2 != null && left1.GetComponent<MedicineData>().Type == left2.GetComponent<MedicineData>().Type)
         {
             _enumValues.Remove(left1.GetComponent<MedicineData>().Type);
@@ -73,12 +97,12 @@ public class GridGeneration : MonoBehaviour
     }
 
     /// <summary>
-    /// Gets the medicine tile.
+    /// Gets the medicine tile at the given column and row.
     /// </summary>
     public GameObject GetMedicineAt(int column, int row)
     {
-        if (column < 0 || column >= Height
-            || row < 0 || row >= Width) return null;
+        if (column < 0 || column >= Width
+            || row < 0 || row >= Height) return null;
         return Grid[column, row];
     }
 }

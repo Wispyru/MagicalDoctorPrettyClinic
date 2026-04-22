@@ -4,14 +4,19 @@ using UnityEngine;
 public class MedicineMatch : MonoBehaviour
 {
     private GridGeneration _gridGeneration;
+    private GridTileSwapping _tileSwapping;
     private GridCascade _gridCascade;
 
     private void Start()
     {
         _gridGeneration = GetComponent<GridGeneration>();
+        _tileSwapping = GetComponent<GridTileSwapping>();
         _gridCascade = GetComponent<GridCascade>();
     }
 
+    /// <summary>
+    /// Checks if the given tile is part of a match of 3 or more and destroys them if so.
+    /// </summary>
     public bool CheckForMatches(GameObject current)
     {
         MedicineData currentData = current.GetComponent<MedicineData>();
@@ -37,6 +42,9 @@ public class MedicineMatch : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Collects all tiles in a line (horizontal or vertical) that match the target type.
+    /// </summary>
     private HashSet<MedicineData> GetLineMatches(MedicineData origin, MedicineType targetType, bool horizontal)
     {
         HashSet<MedicineData> matches = new HashSet<MedicineData>();
@@ -49,12 +57,12 @@ public class MedicineMatch : MonoBehaviour
         {
             MedicineData target = toCheck.Pop();
 
-            int x = (int)target.transform.position.x;
-            int y = (int)target.transform.position.y;
+            // Use MedicineSelect.Position instead of transform.position for grid lookups
+            Vector2Int pos = target.GetComponent<MedicineSelect>().Position;
 
             Vector2Int[] directions = horizontal
-                ? new[] { new Vector2Int(x + 1, y), new Vector2Int(x - 1, y) }
-                : new[] { new Vector2Int(x, y + 1), new Vector2Int(x, y - 1) };
+                ? new[] { new Vector2Int(pos.x + 1, pos.y), new Vector2Int(pos.x - 1, pos.y) }
+                : new[] { new Vector2Int(pos.x, pos.y + 1), new Vector2Int(pos.x, pos.y - 1) };
 
             foreach (Vector2Int dir in directions)
             {
@@ -77,6 +85,45 @@ public class MedicineMatch : MonoBehaviour
         return matches;
     }
 
+    /// <summary>
+    /// Gets all valid neighbours of the given tile.
+    /// </summary>
+    private List<MedicineData> GetNeighbours(Transform current)
+    {
+        Vector2Int pos = current.GetComponent<MedicineSelect>().Position;
+
+        if (!IsValid(pos.x, pos.y)) return null;
+
+        List<MedicineData> collectedNeighbors = new List<MedicineData>();
+
+        Vector2Int[] directions = {
+            new Vector2Int(pos.x,     pos.y + 1), // up
+            new Vector2Int(pos.x,     pos.y - 1), // down
+            new Vector2Int(pos.x - 1, pos.y),     // left
+            new Vector2Int(pos.x + 1, pos.y),     // right
+        };
+
+        foreach (Vector2Int dir in directions)
+        {
+            if (IsValid(dir.x, dir.y))
+                TryAddNeighbour(dir.x, dir.y, collectedNeighbors);
+        }
+
+        return collectedNeighbors;
+    }
+
+    /// <summary>
+    /// Tries to add a neighbour tile to the list.
+    /// </summary>
+    private void TryAddNeighbour(int x, int y, List<MedicineData> neighbours)
+    {
+        MedicineData neighbour = _gridGeneration.Grid[x, y].GetComponent<MedicineData>();
+        neighbours.Add(neighbour);
+    }
+
+    /// <summary>
+    /// Destroys all tiles in the match and triggers a cascade.
+    /// </summary>
     private void MatchDestroy(HashSet<MedicineData> matches)
     {
         foreach (MedicineData g in matches)
@@ -90,8 +137,11 @@ public class MedicineMatch : MonoBehaviour
         _gridCascade.TriggerCascade();
     }
 
-    private bool IsValid(int r, int c)
+    /// <summary>
+    /// Checks whether the given grid coordinates are within bounds.
+    /// </summary>
+    private bool IsValid(int column, int row)
     {
-        return r >= 0 && r < _gridGeneration.Width && c >= 0 && c < _gridGeneration.Height;
+        return column >= 0 && column < _gridGeneration.Width && row >= 0 && row < _gridGeneration.Height;
     }
 }
