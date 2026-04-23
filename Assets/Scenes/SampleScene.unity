@@ -154,7 +154,7 @@ MonoBehaviour:
   Height: 5
   TilePrefab: {fileID: 5510088235488066711, guid: f588be796579e1c4c8ad7327fefb5d88, type: 3}
   Matching: {fileID: 0}
-  _cellSize: 1
+  _cellSize: 0.8
   _gridOrigin: {x: 0, y: 0}
 --- !u!4 &71264139
 Transform:
