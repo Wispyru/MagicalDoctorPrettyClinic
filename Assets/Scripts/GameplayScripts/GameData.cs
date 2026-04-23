@@ -9,6 +9,7 @@ public class GameData
     public static int MaxMoves;
     public static int CurrentPoints;
     public static int CurrentComboCount;
+    public static bool IsComboActive;
 
     // Score per medicine type
     public static int[] ScorePerType = new int[5];

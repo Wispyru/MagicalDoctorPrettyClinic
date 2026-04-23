@@ -54,7 +54,9 @@ public class MedicineMatch : MonoBehaviour
             UpdateScoreForType(currentData.Type, points);
 
             MatchDestroy(matches);
-            HandleCombo();
+
+            if (fromPlayer)
+                HandleCombo();
 
             _gameUI.UpdateUI();
             return true;
@@ -82,16 +84,19 @@ public class MedicineMatch : MonoBehaviour
     }
 
     /// <summary>
-    /// Increments the combo count, updates GameData, and restarts the combo timer.
+    /// Increments the combo count if a combo is already active, otherwise just starts the timer.
+    /// Updates GameData and restarts the combo timer.
     /// </summary>
     private void HandleCombo()
     {
-        _matchComboCount++;
-        GameData.CurrentComboCount = _matchComboCount;
-
         if (_comboTimerCoroutine != null)
+        {
+            _matchComboCount++;
+            GameData.CurrentComboCount = _matchComboCount;
             StopCoroutine(_comboTimerCoroutine);
+        }
 
+        GameData.IsComboActive = true;
         _comboTimerCoroutine = StartCoroutine(ComboTimerRoutine());
     }
 
@@ -102,7 +107,6 @@ public class MedicineMatch : MonoBehaviour
     {
         yield return new WaitForSeconds(_levelData.ComboWindow);
         ResetCombo();
-        _gameUI.UpdateUI();
     }
 
     /// <summary>
@@ -112,6 +116,7 @@ public class MedicineMatch : MonoBehaviour
     {
         _matchComboCount = 1;
         GameData.CurrentComboCount = _matchComboCount;
+        GameData.IsComboActive = false;
         _comboTimerCoroutine = null;
     }
 

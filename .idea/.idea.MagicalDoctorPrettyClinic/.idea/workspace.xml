@@ -7,10 +7,7 @@
     <list default="true" id="f9e5b2d6-d375-48da-bb59-277048dde97e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MagicalDoctorPrettyClinic/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MagicalDoctorPrettyClinic/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameplayScripts/GameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameplayScripts/GameData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid/GridCascade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grid/GridCascade.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Medicine/MedicineMatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Medicine/MedicineMatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/GameUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/GameUI.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +89,7 @@
       <updated>1775719867438</updated>
       <workItem from="1775719869770" duration="10000" />
       <workItem from="1775737203710" duration="1727000" />
-      <workItem from="1776936312787" duration="2161000" />
+      <workItem from="1776936312787" duration="4031000" />
     </task>
     <servers />
   </component>

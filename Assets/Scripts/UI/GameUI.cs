@@ -64,12 +64,9 @@ public class GameUI : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Shows the combo text if the combo is active, then fades it out after a delay.
-    /// </summary>
     private void UpdateComboDisplay()
     {
-        if (GameData.CurrentComboCount <= 1)
+        if (!GameData.IsComboActive)
         {
             ResetComboText();
             return;
