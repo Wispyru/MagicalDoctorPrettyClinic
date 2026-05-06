@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6342f203942e1c84a9946e16d0c0391f
+guid: 66e8352330f771547a9227b00092184e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2923538464251316310
-    second: Volumebar_0
+      213: -3181148510905233475
+    second: MDPCBackground_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Volumebar_0
+      name: MDPCBackground_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 3376
-        height: 444
+        width: 1080
+        height: 2400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 65804e06ebe729820800000000000000
-      internalID: 2923538464251316310
+      spriteID: dbf0bb5a84a4ad3d0800000000000000
+      internalID: -3181148510905233475
       vertices: []
       indices: 
       edges: []
@@ -135,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Volumebar_0: 2923538464251316310
+      MDPCBackground_0: -3181148510905233475
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
