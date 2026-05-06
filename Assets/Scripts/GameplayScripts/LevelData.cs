@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "LevelData", menuName = "ScriptableObjects/LevelData")]
+[CreateAssetMenu(fileName = "LevelData", menuName = "Level/DataObject")]
 public class LevelData : ScriptableObject
 {
     public float MaxTime;

@@ -103,15 +103,18 @@ public class MedicineMatch : MonoBehaviour
 
         _comboTimeRemaining = _levelData.ComboWindow;
         GameData.IsComboActive = true;
-        _comboTimerCoroutine = StartCoroutine(ComboTimerRoutine(_comboTimeRemaining));
-    }
+        _comboTimerCoroutine = StartCoroutine(ComboTimerRoutine());    }
 
     /// <summary>
     /// Counts down the combo window, pausing while cascades are animating, and resets when it expires.
     /// </summary>
-    private IEnumerator ComboTimerRoutine(float duration)
+    private IEnumerator ComboTimerRoutine()
     {
+        yield return null;
+
         float elapsed = 0f;
+        float duration = _levelData.ComboWindow;
+
         while (elapsed < duration)
         {
             if (!GameData.IsAnimating)
