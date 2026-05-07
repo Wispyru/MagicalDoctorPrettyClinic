@@ -7,7 +7,7 @@ public class DebugLevelSystem : MonoBehaviour
 {
     [Header("Testing Options")]
     [SerializeField] private bool _showDebugPanel = true;
-    [SerializeField] private KeyCode _toggleDebugKey = KeyCode.D;
+    private KeyCode _toggleDebugKey = KeyCode.D;
 
     private bool _debugPanelActive = true;
     private Vector2 _scrollPosition = Vector2.zero;

@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9e5b2d6-d375-48da-bb59-277048dde97e" name="Changes" comment="" />
+    <list default="true" id="f9e5b2d6-d375-48da-bb59-277048dde97e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/DebugLevelSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/DebugLevelSystem.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,7 +104,7 @@
       <workItem from="1775719869770" duration="10000" />
       <workItem from="1775737203710" duration="1727000" />
       <workItem from="1777015828834" duration="1001000" />
-      <workItem from="1778138178604" duration="1408000" />
+      <workItem from="1778138178604" duration="1982000" />
     </task>
     <servers />
   </component>

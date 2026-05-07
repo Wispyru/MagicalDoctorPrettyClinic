@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class StarRating : MonoBehaviour
 {
     [SerializeField] private Image[] _stars; // Array of 3 star images
-    [SerializeField] private Color _filledStarColor = Color.yellow;
-    [SerializeField] private Color _emptyStarColor = Color.gray;
+    private Color _filledStarColor = Color.yellow;
+    private Color _emptyStarColor = Color.gray;
 
     /// <summary>
     /// Updates the star display based on the player's score percentage.
