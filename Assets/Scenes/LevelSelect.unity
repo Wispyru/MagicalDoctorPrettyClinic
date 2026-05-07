@@ -325,7 +325,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1492244505}
         m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
         m_MethodName: OnLevelButtonClicked
         m_Mode: 3
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1492244505}
         m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
         m_MethodName: OnLevelButtonClicked
         m_Mode: 3
@@ -770,7 +770,6 @@ GameObject:
   - component: {fileID: 1105075330}
   - component: {fileID: 1105075329}
   - component: {fileID: 1105075328}
-  - component: {fileID: 1105075327}
   m_Layer: 6
   m_Name: Level 4
   m_TagString: Untagged
@@ -798,19 +797,6 @@ RectTransform:
   m_AnchoredPosition: {x: 787, y: -612}
   m_SizeDelta: {x: 230, y: 103}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1105075327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1105075325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bbb8e65bfd2be748a9e7fb30c015ace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  currentImage: {fileID: 0}
 --- !u!114 &1105075328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,7 +841,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1492244505}
         m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
         m_MethodName: OnLevelButtonClicked
         m_Mode: 3
@@ -1125,7 +1111,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1492244505}
         m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
         m_MethodName: OnLevelButtonClicked
         m_Mode: 3
