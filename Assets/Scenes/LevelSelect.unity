@@ -240,7 +240,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3149886755348894301, guid: ec67bc32ceb02e146a832bbd14bb9add, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 445846005}
   m_SourcePrefab: {fileID: 100100000, guid: ec67bc32ceb02e146a832bbd14bb9add, type: 3}
 --- !u!1 &414026609
 GameObject:
@@ -325,14 +328,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 445846001}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 445846005}
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: OnLevelButtonClicked
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -385,6 +388,44 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1196416671401954143, guid: ec67bc32ceb02e146a832bbd14bb9add, type: 3}
   m_PrefabInstance: {fileID: 348006467}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &445846005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445846001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60b19e8a082c23c48909ac28cd3d604d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelMenu
+  LevelButtons:
+  - {fileID: 1273262754}
+  - {fileID: 414026611}
+  - {fileID: 760223139}
+  - {fileID: 1105075328}
+  _TemporaryLevelData:
+  - LevelName: 1
+    Description: schizo
+    MinimumScore: 100
+    MaximumScore: 100
+  - LevelName: 2
+    Description: something bad
+    MinimumScore: 420
+    MaximumScore: 69
+  _descriptionPanel: {fileID: 445846001}
+  _descriptionPanelRect: {fileID: 445846002}
+  _panelHiddenPosY: 0
+  _panelShownPosY: 0
+  _panelTweenDuration: 0
+  _levelNameText: {fileID: 20096233}
+  _descriptionText: {fileID: 915699587}
+  _minimumScoreText: {fileID: 1762380566}
+  _playerScoreText: {fileID: 1483036789}
+  _starRating: {fileID: 1299655333}
+  _proceedButton: {fileID: 215282239}
+  _closeButton: {fileID: 781449609}
 --- !u!1 &760223137
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,14 +509,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 445846001}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 445846005}
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: OnLevelButtonClicked
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -854,14 +895,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 445846001}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 445846005}
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: OnLevelButtonClicked
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -1053,7 +1094,6 @@ GameObject:
   - component: {fileID: 1273262756}
   - component: {fileID: 1273262755}
   - component: {fileID: 1273262754}
-  - component: {fileID: 1273262757}
   m_Layer: 6
   m_Name: Level 1
   m_TagString: Untagged
@@ -1125,14 +1165,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 445846001}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 445846005}
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: OnLevelButtonClicked
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -1175,36 +1215,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273262752}
   m_CullTransparentMesh: 1
---- !u!114 &1273262757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273262752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60b19e8a082c23c48909ac28cd3d604d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelMenu
-  LevelButtons:
-  - {fileID: 1273262754}
-  - {fileID: 414026611}
-  - {fileID: 760223139}
-  - {fileID: 1105075328}
-  _TemporaryLevelData: []
-  _descriptionPanel: {fileID: 445846001}
-  _descriptionPanelRect: {fileID: 445846002}
-  _panelHiddenPosY: 0
-  _panelShownPosY: 0
-  _panelTweenDuration: 0
-  _levelNameText: {fileID: 20096233}
-  _descriptionText: {fileID: 915699587}
-  _minimumScoreText: {fileID: 1762380566}
-  _playerScoreText: {fileID: 1483036789}
-  _starRating: {fileID: 1299655333}
-  _proceedButton: {fileID: 215282239}
-  _closeButton: {fileID: 781449609}
 --- !u!1 &1282176338
 GameObject:
   m_ObjectHideFlags: 0
