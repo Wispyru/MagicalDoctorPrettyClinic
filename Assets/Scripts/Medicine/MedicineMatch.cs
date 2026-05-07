@@ -5,15 +5,20 @@ using UnityEngine;
 public class MedicineMatch : MonoBehaviour
 {
     [SerializeField]
-    private LevelData _levelData;
+    private float _comboWindow = 5f;
+    [SerializeField]
+    private int _maxMoves = 20;
 
     private GridGeneration _gridGeneration;
     private GridCascade _gridCascade;
     private GameUI _gameUI;
 
     private int _matchComboCount;
+    private bool _firstMatchMade;
     private Coroutine _comboTimerCoroutine;
     private float _comboTimeRemaining;
+
+    private const int _maxComboMultiplier = 5;
 
     private void Start()
     {
@@ -22,8 +27,9 @@ public class MedicineMatch : MonoBehaviour
         _gameUI = FindAnyObjectByType<GameUI>();
 
         _matchComboCount = 1;
-        GameData.CurrentMoves = _levelData.MaxMoves;
-        GameData.MaxMoves = _levelData.MaxMoves;
+        _firstMatchMade = false;
+        GameData.CurrentMoves = _maxMoves;
+        GameData.MaxMoves = _maxMoves;
     }
 
     /// <summary>
@@ -48,16 +54,16 @@ public class MedicineMatch : MonoBehaviour
         if (matches.Count >= 3)
         {
             if (fromPlayer)
+            {
                 DecreaseMoves();
+                HandleCombo();
+            }
 
             int points = CalculatePoints(matches, currentData);
             GameData.CurrentPoints += points;
             UpdateScoreForType(currentData.Type, points);
 
             MatchDestroy(matches);
-
-            if (fromPlayer)
-                HandleCombo();
 
             _gameUI.UpdateUI();
             return true;
@@ -85,25 +91,23 @@ public class MedicineMatch : MonoBehaviour
     }
 
     /// <summary>
-    /// Increments the combo count if a combo is already active, otherwise just starts the timer.
+    /// Tracks player matches to build the combo multiplier.
+    /// The first match starts the timer but does not increase the multiplier.
+    /// Each subsequent match within the combo window increases the multiplier, capped at the max.
     /// </summary>
     private void HandleCombo()
     {
         if (_comboTimerCoroutine != null)
         {
-            _matchComboCount++;
+            _matchComboCount = Mathf.Min(_matchComboCount + 1, _maxComboMultiplier);
             GameData.CurrentComboCount = _matchComboCount;
-            StopCoroutine(_comboTimerCoroutine);
-            Debug.Log($"Combo incremented to {_matchComboCount}");
-        }
-        else
-        {
-            Debug.Log("Combo timer started - first match");
         }
 
-        _comboTimeRemaining = _levelData.ComboWindow;
-        GameData.IsComboActive = true;
-        _comboTimerCoroutine = StartCoroutine(ComboTimerRoutine());    }
+        _firstMatchMade = true;
+        _comboTimeRemaining = _comboWindow;
+        GameData.IsComboActive = _matchComboCount > 1;
+        _comboTimerCoroutine = StartCoroutine(ComboTimerRoutine());
+    }
 
     /// <summary>
     /// Counts down the combo window, pausing while cascades are animating, and resets when it expires.
@@ -113,7 +117,7 @@ public class MedicineMatch : MonoBehaviour
         yield return null;
 
         float elapsed = 0f;
-        float duration = _levelData.ComboWindow;
+        float duration = _comboWindow;
 
         while (elapsed < duration)
         {
@@ -128,20 +132,22 @@ public class MedicineMatch : MonoBehaviour
     }
 
     /// <summary>
-    /// Resets the combo count back to 1 and updates GameData.
+    /// Resets the combo multiplier back to 1 and clears all combo state.
     /// </summary>
     private void ResetCombo()
     {
-        Debug.Log("Combo reset");
         _matchComboCount = 1;
+        _firstMatchMade = false;
         GameData.CurrentComboCount = _matchComboCount;
         GameData.IsComboActive = false;
         _comboTimeRemaining = 0f;
         _comboTimerCoroutine = null;
+        _gameUI.UpdateUI();
     }
 
     /// <summary>
-    /// Calculates the points for a match, multiplied by the current combo count.
+    /// Calculates the points for a match multiplied by the current combo multiplier.
+    /// Cascading matches inherit whatever multiplier is active at the time they trigger.
     /// </summary>
     private int CalculatePoints(HashSet<MedicineData> matches, MedicineData target)
     {
