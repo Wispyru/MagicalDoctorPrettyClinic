@@ -1,0 +1,5 @@
+### these are the people that get to merge to develop:
+
+* @Wispyru @Cherubdisorder
+unleash-server/* @Wispyru @Cherubdisorder
+simplenodeservice/* @Wispyru @Cherubdisorder
