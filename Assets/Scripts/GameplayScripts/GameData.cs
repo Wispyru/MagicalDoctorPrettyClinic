@@ -9,7 +9,12 @@ public class GameData
 
     // Curent level states
     public static int CurrentRound;
-    public static int CurrentMoveAmount;
     public static float CurrentTimeInSeconds;
     public static int CurrentPoints;
+    public static int CurrentMoves;
+    public static int CurrentComboCount;
+    public static bool IsComboActive;
+
+    // Score per medicine type
+    public static int[] ScorePerType = new int[5];
 }

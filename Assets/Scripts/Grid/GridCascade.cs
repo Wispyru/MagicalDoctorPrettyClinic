@@ -176,7 +176,7 @@ public class GridCascade : MonoBehaviour
             {
                 if (_gridGeneration.Grid[column, row] == null) continue;
 
-                bool matchFound = _medicineMatch.CheckForMatches(_gridGeneration.Grid[column, row]);
+                bool matchFound = _medicineMatch.CheckForMatches(_gridGeneration.Grid[column, row], fromPlayer: false);
                 if (matchFound) anyMatchFound = true;
             }
         }
