@@ -94,6 +94,8 @@ public class LevelMenu : MonoBehaviour
     /// </summary>
     public void OnLevelButtonClicked(int levelId)
     {
+        GameData.SelectedLevelButton = LevelButtons[levelId - 1].gameObject;
+        Debug.Log(GameData.SelectedLevelButton);
         CanvasGroup canvasGroup = LevelButtons[levelId - 1].GetComponent<CanvasGroup>();
         bool isUnlocked = canvasGroup == null || canvasGroup.interactable;
 

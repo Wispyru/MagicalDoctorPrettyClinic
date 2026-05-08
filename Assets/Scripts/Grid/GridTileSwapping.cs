@@ -4,10 +4,12 @@ using UnityEngine;
 public class GridTileSwapping : MonoBehaviour
 {
     private GridGeneration _gridGeneration;
+    private DisplayLevelData _displayLevelData;
 
     private void Start()
     {
         _gridGeneration = FindAnyObjectByType<GridGeneration>();
+        _displayLevelData = FindAnyObjectByType<DisplayLevelData>();
     }
 
     /// <summary>
@@ -27,6 +29,13 @@ public class GridTileSwapping : MonoBehaviour
         {
             PerformSwap(tile1, tile2, tile2Position, tile1Position);
         }
+
+        if (GameData.CurrentMoveAmount != 0) 
+        {
+            GameData.CurrentMoveAmount--;
+            _displayLevelData.UpdateUIText();
+        }
+
     }
 
     /// <summary>

@@ -5,6 +5,6 @@ public class LevelData : ScriptableObject
 {
     public int Rounds;
     public int MovesPerRound;
-    public int MaxTimeInSeconds;
+    public float MaxTimeInSeconds;
     public int RequiredPoints;
 }
