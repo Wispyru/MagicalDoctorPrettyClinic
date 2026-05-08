@@ -1,3 +1,4 @@
+// IllnessDex.cs
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +11,12 @@ public class IllnessDex : MonoBehaviour
     [SerializeField] private Button[] _illnessButtons;
 
     private IllnessDetail _illnessDetail;
+    private IllnessDexNavigation _illnessDexNavigation;
 
     private void Awake()
     {
         _illnessDetail = GetComponent<IllnessDetail>();
+        _illnessDexNavigation = GetComponent<IllnessDexNavigation>();
         SetupIllnessButtons();
     }
 
@@ -33,9 +36,9 @@ public class IllnessDex : MonoBehaviour
     }
 
     /// <summary>
-    /// Assigns the correct sprite to the button image and registers the click listener.
-    /// Unlocked buttons show the colored sprite and open the detail panel.
-    /// Locked buttons show the silhouette and do nothing on click.
+    /// Assigns the correct sprite to the button image and registers
+    /// the click listener. Locked buttons show the silhouette and
+    /// do nothing on click.
     /// </summary>
     private void SetupButton(Button button, IllnessData data, int index)
     {
@@ -54,10 +57,12 @@ public class IllnessDex : MonoBehaviour
 
     /// <summary>
     /// Called when an unlocked illness button is clicked.
-    /// Passes the matching IllnessData to the detail panel.
+    /// Passes the illness data to the detail panel and tells
+    /// navigation to switch panels.
     /// </summary>
     private void OnIllnessButtonClicked(int index)
     {
         _illnessDetail.ShowDetail(_illnessData[index]);
+        _illnessDexNavigation.OpenDetail();
     }
 }

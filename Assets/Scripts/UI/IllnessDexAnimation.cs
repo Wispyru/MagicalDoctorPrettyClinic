@@ -1,12 +1,11 @@
-// IllnessDetailAnimation.cs
 using DG.Tweening;
 using UnityEngine;
 
-public class IllnessDetailAnimation : MonoBehaviour
+public class IllnessDexAnimation : MonoBehaviour
 {
     [Header("Panel References")]
-    [SerializeField] private GameObject _detailPanel;
-    [SerializeField] private RectTransform _detailPanelRect;
+    [SerializeField] private GameObject _dexPanel;
+    [SerializeField] private RectTransform _dexPanelRect;
 
     [Header("Animation Settings")]
     [SerializeField] private float _panelHiddenPosX;
@@ -19,37 +18,37 @@ public class IllnessDetailAnimation : MonoBehaviour
     }
 
     /// <summary>
-    /// Snaps the detail panel off screen to the left instantly on startup
+    /// Snaps the dex panel off screen to the right instantly on startup
     /// so it is ready to slide in when triggered.
     /// </summary>
     private void HidePanelInstant()
     {
-        _detailPanel.SetActive(false);
-        _detailPanelRect.anchoredPosition = new Vector2(_panelHiddenPosX,
-            _detailPanelRect.anchoredPosition.y);
+        _dexPanel.SetActive(false);
+        _dexPanelRect.anchoredPosition = new Vector2(_panelHiddenPosX,
+            _dexPanelRect.anchoredPosition.y);
     }
 
     /// <summary>
-    /// Activates the detail panel and slides it in from the left.
+    /// Activates the dex panel and slides it in from the right.
     /// </summary>
     public void ShowPanel()
     {
-        _detailPanel.SetActive(true);
-        _detailPanelRect.DOAnchorPosX(_panelShownPosX, _panelTweenDuration)
+        _dexPanel.SetActive(true);
+        _dexPanelRect.DOAnchorPosX(_panelShownPosX, _panelTweenDuration)
             .SetEase(Ease.OutCubic);
     }
 
     /// <summary>
-    /// Slides the detail panel back to the left and deactivates it
+    /// Slides the dex panel back to the right and deactivates it
     /// once the animation finishes.
     /// </summary>
     public async void HidePanel()
     {
-        await _detailPanelRect
+        await _dexPanelRect
             .DOAnchorPosX(_panelHiddenPosX, _panelTweenDuration)
             .SetEase(Ease.InCubic)
             .AsyncWaitForCompletion();
 
-        _detailPanel.SetActive(false);
+        _dexPanel.SetActive(false);
     }
 }
