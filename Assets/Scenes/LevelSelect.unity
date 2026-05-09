@@ -130,6 +130,202 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &26263498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 26263499}
+  - component: {fileID: 26263506}
+  - component: {fileID: 26263505}
+  - component: {fileID: 26263504}
+  - component: {fileID: 26263503}
+  - component: {fileID: 26263502}
+  - component: {fileID: 26263501}
+  - component: {fileID: 26263500}
+  - component: {fileID: 26263507}
+  m_Layer: 5
+  m_Name: illness Dex
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &26263499
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26263498}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1671744056}
+  - {fileID: 789515778}
+  - {fileID: 298955463}
+  - {fileID: 1121378624}
+  m_Father: {fileID: 1492244504}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &26263500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26263498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d84f13917c453bb418bb2fec8681a6dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IllnessDexNavigation
+--- !u!114 &26263501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26263498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d5ff4207090484a9ccb6e463773cbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IllnessDexAnimation
+  _dexPanel: {fileID: 298955462}
+  _dexPanelRect: {fileID: 298955463}
+  _panelHiddenPosX: 1200
+  _panelShownPosX: 0
+  _panelTweenDuration: 0.4
+--- !u!114 &26263502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26263498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ead5ea313e5ba54c98a7796c3f6b9d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IllnessDetailAnimation
+  _detailPanel: {fileID: 1121378623}
+  _detailPanelRect: {fileID: 1121378624}
+  _panelHiddenPosX: -1200
+  _panelShownPosX: 0
+  _panelTweenDuration: 0.4
+--- !u!114 &26263503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26263498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8532fcf7cbc08a48a1ed22e50c2c09c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IllnessDetail
+  _illnessImage: {fileID: 1916305134}
+  _illnessNameText: {fileID: 541912517}
+  _illnessDescriptionText: {fileID: 1057974300}
+--- !u!114 &26263504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26263498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 301830cffa96bd941bafde477917d726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IllnessDex
+  _illnessData:
+  - IllnessName: Worm
+    Description: This is Worm
+    LockedSprite: {fileID: 3306044837167971234, guid: 80286c19d929be6469d222d28fb12c88, type: 3}
+    UnlockedSprite: {fileID: -5877557156445394123, guid: ce4edc8605a998a42a188bb1b9aa189b, type: 3}
+    IsUnlocked: 1
+  - IllnessName: Octo
+    Description: This is Octo
+    LockedSprite: {fileID: -6757607289298893452, guid: 7678d21e989a92249bd1e44a7a6a3eec, type: 3}
+    UnlockedSprite: {fileID: 224315482611628894, guid: 188800a2915296544b26ef8c55b88991, type: 3}
+    IsUnlocked: 1
+  - IllnessName: Cloud
+    Description: This is Cloud
+    LockedSprite: {fileID: 4209817485242930784, guid: 0f2cdf0e2d74a4748b0ba40ca4bd889b, type: 3}
+    UnlockedSprite: {fileID: 8526136734326644515, guid: 7724a0125ddbd4144b2bc5aba7ad2c38, type: 3}
+    IsUnlocked: 0
+  - IllnessName: Square
+    Description: This is Square
+    LockedSprite: {fileID: 6565042627484927602, guid: 6bc9d6ebd7a64a74baa6411f844a75ac, type: 3}
+    UnlockedSprite: {fileID: -6529684237482891710, guid: dfc3e671d4f9e1341b1ddb0b7274b3c5, type: 3}
+    IsUnlocked: 0
+  _illnessButtons:
+  - {fileID: 609166011}
+  - {fileID: 792272063}
+  - {fileID: 2146651588}
+  - {fileID: 650890846}
+--- !u!114 &26263505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26263498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &26263506
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26263498}
+  m_CullTransparentMesh: 1
+--- !u!225 &26263507
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26263498}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &140367880
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,127 +465,6 @@ MonoBehaviour:
   m_Spacing: {x: 20, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
---- !u!1 &175451200
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 175451201}
-  - component: {fileID: 175451204}
-  - component: {fileID: 175451203}
-  - component: {fileID: 175451202}
-  - component: {fileID: 175451205}
-  m_Layer: 0
-  m_Name: illnes Dex
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &175451201
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175451200}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -23999.998}
-  m_LocalScale: {x: 239.99998, y: 239.99998, z: 239.99998}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1671744056}
-  - {fileID: 789515778}
-  - {fileID: 298955463}
-  - {fileID: 1121378624}
-  m_Father: {fileID: 1492244504}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &175451202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175451200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ead5ea313e5ba54c98a7796c3f6b9d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IllnessDetailAnimation
-  _detailPanel: {fileID: 1121378623}
-  _detailPanelRect: {fileID: 1121378624}
-  _panelHiddenPosX: 1200
-  _panelShownPosX: 0
-  _panelTweenDuration: 0.3
---- !u!114 &175451203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175451200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8532fcf7cbc08a48a1ed22e50c2c09c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IllnessDetail
-  _illnessImage: {fileID: 1916305134}
-  _illnessNameText: {fileID: 541912517}
-  _illnessDescriptionText: {fileID: 1057974300}
---- !u!114 &175451204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175451200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 301830cffa96bd941bafde477917d726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IllnessDex
-  _illnessData:
-  - IllnessName: Worm
-    Description: this is a worm
-    LockedSprite: {fileID: 3306044837167971234, guid: 80286c19d929be6469d222d28fb12c88, type: 3}
-    UnlockedSprite: {fileID: -5877557156445394123, guid: ce4edc8605a998a42a188bb1b9aa189b, type: 3}
-    IsUnlocked: 1
-  - IllnessName: Octo
-    Description: this is a octo
-    LockedSprite: {fileID: -6757607289298893452, guid: 7678d21e989a92249bd1e44a7a6a3eec, type: 3}
-    UnlockedSprite: {fileID: 224315482611628894, guid: 188800a2915296544b26ef8c55b88991, type: 3}
-    IsUnlocked: 1
-  - IllnessName: Cloud
-    Description: This is a cloud
-    LockedSprite: {fileID: 4209817485242930784, guid: 0f2cdf0e2d74a4748b0ba40ca4bd889b, type: 3}
-    UnlockedSprite: {fileID: 8526136734326644515, guid: 7724a0125ddbd4144b2bc5aba7ad2c38, type: 3}
-    IsUnlocked: 0
-  - IllnessName: Square
-    Description: This is a square
-    LockedSprite: {fileID: 6565042627484927602, guid: 6bc9d6ebd7a64a74baa6411f844a75ac, type: 3}
-    UnlockedSprite: {fileID: -6529684237482891710, guid: dfc3e671d4f9e1341b1ddb0b7274b3c5, type: 3}
-    IsUnlocked: 0
-  _illnessButtons:
-  - {fileID: 609166011}
-  - {fileID: 792272063}
-  - {fileID: 2146651588}
-  - {fileID: 650890846}
---- !u!114 &175451205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175451200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d84f13917c453bb418bb2fec8681a6dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IllnessDexNavigation
 --- !u!114 &215282239 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6810892243436557102, guid: ec67bc32ceb02e146a832bbd14bb9add, type: 3}
@@ -483,7 +558,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 175451205}
+      - m_Target: {fileID: 26263500}
         m_TargetAssemblyTypeName: IllnessDexNavigation, Assembly-CSharp
         m_MethodName: OpenDex
         m_Mode: 1
@@ -557,16 +632,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298955462}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
-  m_LocalScale: {x: 0.004166667, y: 0.004166667, z: 0.004166667}
+  m_LocalPosition: {x: 0, y: 0, z: 21599.998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1360423222}
-  m_Father: {fileID: 175451201}
+  m_Father: {fileID: 26263499}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.9125061}
+  m_AnchoredPosition: {x: 0, y: 459.00146}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &348006467
@@ -1247,10 +1322,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1360423222}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -75, y: 100}
-  m_SizeDelta: {x: 450, y: 450}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &609166009
 MonoBehaviour:
@@ -1367,10 +1442,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1360423222}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 475, y: -500}
-  m_SizeDelta: {x: 450, y: 450}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &650890844
 MonoBehaviour:
@@ -1625,15 +1700,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789515777}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
-  m_LocalScale: {x: 0.004166667, y: 0.004166667, z: 0.004166667}
+  m_LocalPosition: {x: 0, y: 0, z: 21599.998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 175451201}
+  m_Father: {fileID: 26263499}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.5875244, y: 4.6029053}
+  m_AnchoredPosition: {x: -158.99408, y: -95.30249}
   m_SizeDelta: {x: 204.8, y: 190.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &789515779
@@ -1680,7 +1755,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 175451205}
+      - m_Target: {fileID: 26263500}
         m_TargetAssemblyTypeName: IllnessDexNavigation, Assembly-CSharp
         m_MethodName: OnBackButtonClicked
         m_Mode: 1
@@ -1763,10 +1838,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1360423222}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 475, y: 100}
-  m_SizeDelta: {x: 450, y: 450}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &792272061
 MonoBehaviour:
@@ -2466,7 +2541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1121378624
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2474,14 +2549,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121378623}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2399.9998}
+  m_LocalScale: {x: 239.99998, y: 239.99998, z: 239.99998}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1150374478}
   - {fileID: 1740867060}
-  m_Father: {fileID: 175451201}
+  m_Father: {fileID: 26263499}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3561,7 +3636,7 @@ RectTransform:
   - {fileID: 272484752}
   - {fileID: 606536891}
   - {fileID: 1468678137}
-  - {fileID: 175451201}
+  - {fileID: 26263499}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3633,11 +3708,11 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671744055}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
-  m_LocalScale: {x: 0.004166667, y: 0.004166667, z: 0.004166667}
+  m_LocalPosition: {x: 0, y: 0, z: 21599.998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 175451201}
+  m_Father: {fileID: 26263499}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4152,10 +4227,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1360423222}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -75, y: -500}
-  m_SizeDelta: {x: 450, y: 450}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2146651586
 MonoBehaviour:

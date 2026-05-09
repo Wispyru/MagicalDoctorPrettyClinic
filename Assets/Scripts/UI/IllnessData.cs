@@ -5,7 +5,7 @@ public class IllnessData
 {
     public string IllnessName;
     [TextArea] public string Description;
-    public Sprite LockedSprite;    // Black silhouette version
-    public Sprite UnlockedSprite;  // Full colored version
-    public bool IsUnlocked;        // TODO: Replace with team's data system later
+    public Sprite LockedSprite;    // Silhouette version
+    public Sprite UnlockedSprite;  // Colored version
+    public bool IsUnlocked;        // TODO: Replace with data system later
 }

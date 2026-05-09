@@ -18,18 +18,19 @@ public class IllnessDexAnimation : MonoBehaviour
     }
 
     /// <summary>
-    /// Snaps the dex panel off screen to the right instantly on startup
-    /// so it is ready to slide in when triggered.
+    /// Snaps the illness panel off screen instantly on startup.
+    /// Uses Start instead of Awake so it runs even if the parent
+    /// starts inactive, and only hides the child panel not the parent.
     /// </summary>
     private void HidePanelInstant()
     {
         _dexPanel.SetActive(false);
-        _dexPanelRect.anchoredPosition = new Vector2(_panelHiddenPosX,
-            _dexPanelRect.anchoredPosition.y);
+        _dexPanelRect.anchoredPosition = new Vector2(
+            _panelHiddenPosX, _dexPanelRect.anchoredPosition.y);
     }
 
     /// <summary>
-    /// Activates the dex panel and slides it in from the right.
+    /// Activates the illness panel and slides it in from the right.
     /// </summary>
     public void ShowPanel()
     {
@@ -39,7 +40,7 @@ public class IllnessDexAnimation : MonoBehaviour
     }
 
     /// <summary>
-    /// Slides the dex panel back to the right and deactivates it
+    /// Slides the illness panel back to the right and deactivates it
     /// once the animation finishes.
     /// </summary>
     public async void HidePanel()

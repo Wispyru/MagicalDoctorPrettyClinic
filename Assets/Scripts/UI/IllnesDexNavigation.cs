@@ -4,6 +4,7 @@ public class IllnessDexNavigation : MonoBehaviour
 {
     private IllnessDexAnimation _illnessDexAnimation;
     private IllnessDetailAnimation _illnessDetailAnimation;
+    private CanvasGroup _canvasGroup;
 
     private PanelState _currentState = PanelState.Closed;
 
@@ -11,21 +12,45 @@ public class IllnessDexNavigation : MonoBehaviour
     {
         _illnessDexAnimation = GetComponent<IllnessDexAnimation>();
         _illnessDetailAnimation = GetComponent<IllnessDetailAnimation>();
+        _canvasGroup = GetComponent<CanvasGroup>();
+        HideContainer();
+    }
+
+    /// <summary>
+    /// Makes the entire Illness Dex invisible and unclickable without
+    /// deactivating the GameObject so all scripts stay initialized.
+    /// </summary>
+    private void HideContainer()
+    {
+        _canvasGroup.alpha = 0f;
+        _canvasGroup.blocksRaycasts = false;
+        _canvasGroup.interactable = false;
+    }
+
+    /// <summary>
+    /// Makes the entire Illness Dex visible and interactable.
+    /// </summary>
+    private void ShowContainer()
+    {
+        _canvasGroup.alpha = 1f;
+        _canvasGroup.blocksRaycasts = true;
+        _canvasGroup.interactable = true;
     }
 
     /// <summary>
     /// Opens the illness dex from the level select.
-    /// Called by the illness dex button in the level select via Unity Events.
+    /// Called by the illness dex button via Unity Events.
     /// </summary>
     public void OpenDex()
     {
+        ShowContainer();
         _currentState = PanelState.DexOpen;
         _illnessDexAnimation.ShowPanel();
     }
 
     /// <summary>
-    /// Opens the detail panel and hides the dex at the same time.
-    /// Called by IllnessDex when an illness button is clicked.
+    /// Opens the detail panel and hides the dex panel simultaneously.
+    /// Called by IllnessDex when an unlocked illness button is clicked.
     /// </summary>
     public void OpenDetail()
     {
@@ -47,7 +72,7 @@ public class IllnessDexNavigation : MonoBehaviour
     }
 
     /// <summary>
-    /// Hides the detail panel and shows the dex again simultaneously.
+    /// Hides the detail panel and shows the dex panel simultaneously.
     /// </summary>
     private void ReturnToDex()
     {
@@ -57,11 +82,12 @@ public class IllnessDexNavigation : MonoBehaviour
     }
 
     /// <summary>
-    /// Closes the dex entirely and returns to the level select.
+    /// Hides the dex panel and makes the entire container invisible again.
     /// </summary>
     private void CloseDex()
     {
         _currentState = PanelState.Closed;
         _illnessDexAnimation.HidePanel();
+        HideContainer();
     }
 }

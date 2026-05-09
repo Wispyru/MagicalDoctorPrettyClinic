@@ -1,4 +1,3 @@
-// IllnessDetailAnimation.cs
 using DG.Tweening;
 using UnityEngine;
 
@@ -19,14 +18,15 @@ public class IllnessDetailAnimation : MonoBehaviour
     }
 
     /// <summary>
-    /// Snaps the detail panel off screen to the left instantly on startup
-    /// so it is ready to slide in when triggered.
+    /// Snaps the detail panel off screen instantly on startup.
+    /// Uses Start instead of Awake so it runs correctly regardless
+    /// of whether the parent starts active or inactive.
     /// </summary>
     private void HidePanelInstant()
     {
         _detailPanel.SetActive(false);
-        _detailPanelRect.anchoredPosition = new Vector2(_panelHiddenPosX,
-            _detailPanelRect.anchoredPosition.y);
+        _detailPanelRect.anchoredPosition = new Vector2(
+            _panelHiddenPosX, _detailPanelRect.anchoredPosition.y);
     }
 
     /// <summary>

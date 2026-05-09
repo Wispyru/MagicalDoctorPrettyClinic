@@ -1,4 +1,3 @@
-// IllnessDex.cs
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,8 +36,8 @@ public class IllnessDex : MonoBehaviour
 
     /// <summary>
     /// Assigns the correct sprite to the button image and registers
-    /// the click listener. Locked buttons show the silhouette and
-    /// do nothing on click.
+    /// the click listener. Locked buttons show the silhouette,
+    /// have no hover highlight and do nothing on click.
     /// </summary>
     private void SetupButton(Button button, IllnessData data, int index)
     {
@@ -50,9 +49,33 @@ public class IllnessDex : MonoBehaviour
 
         if (data.IsUnlocked)
         {
-            int captured = index;
-            button.onClick.AddListener(() => OnIllnessButtonClicked(captured));
+            SetButtonUnlocked(button, index);
         }
+        else
+        {
+            SetButtonLocked(button);
+        }
+    }
+
+    /// <summary>
+    /// Enables the button and restores color tint transition and adds the click listener.
+    /// </summary>
+    private void SetButtonUnlocked(Button button, int index)
+    {
+        button.interactable = true;
+        button.transition = Selectable.Transition.ColorTint;
+        int captured = index;
+        button.onClick.AddListener(() => OnIllnessButtonClicked(captured));
+    }
+
+    /// <summary>
+    /// Disables the button interaction and removes the color tint transition
+    /// so locked buttons have no hover highlight.
+    /// </summary>
+    private void SetButtonLocked(Button button)
+    {
+        button.interactable = false;
+        button.transition = Selectable.Transition.None;
     }
 
     /// <summary>
