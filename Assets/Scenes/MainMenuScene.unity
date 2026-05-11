@@ -2115,6 +2115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1156509817}
+  - component: {fileID: 1156509818}
   m_Layer: 6
   m_Name: Settings Panel
   m_TagString: Untagged
@@ -2143,6 +2144,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -285.92285}
   m_SizeDelta: {x: -611.99994, y: -1360}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1156509818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156509816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb68ade221ef6914da37ecb28fc8ea22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VolumeSettings
+  _audioMixer: {fileID: 24100000, guid: c4ab4a51b120eeb42bf574df2c80be25, type: 2}
+  _musicSlider: {fileID: 1201769822}
 --- !u!1 &1201769820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2234,7 +2249,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1905994245}
+      - m_Target: {fileID: 1156509818}
         m_TargetAssemblyTypeName: VolumeSettings, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 1
@@ -2275,8 +2290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 161c2e13e8467704f8c74beb1a65b3e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  musicSource: {fileID: 256111439}
-  BackGroundMusic: {fileID: 8300000, guid: 2aa5a1e9a3a7a3248ae510b4443f031d, type: 3}
+  _musicSource: {fileID: 256111439}
+  _backgroundMusic: {fileID: 8300000, guid: 2aa5a1e9a3a7a3248ae510b4443f031d, type: 3}
 --- !u!4 &1371309114
 Transform:
   m_ObjectHideFlags: 0
@@ -2473,8 +2488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb68ade221ef6914da37ecb28fc8ea22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VolumeSettings
-  myMixer: {fileID: 24100000, guid: c4ab4a51b120eeb42bf574df2c80be25, type: 2}
-  musicSlider: {fileID: 1201769822}
+  _audioMixer: {fileID: 0}
+  _musicSlider: {fileID: 0}
 --- !u!65 &1905994246
 BoxCollider:
   m_ObjectHideFlags: 0
