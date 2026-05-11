@@ -2,17 +2,15 @@ using UnityEngine;
 
 public class MedicineData : MonoBehaviour
 {
-    //public variables
-    // quick fix comment
     public MedicineType Type;
     public Sprite[] sprites;
+    public int Points;
 
     /// <summary>
     /// Sets the color of the sprite based on the medicine type
     /// </summary>
     public void SetMedicineColor()
     {
-        //TODO: Change this to the sprites when the time comes.
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
         switch (Type)

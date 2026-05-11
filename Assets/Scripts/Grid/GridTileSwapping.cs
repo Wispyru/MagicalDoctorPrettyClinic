@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class GridTileSwapping : MonoBehaviour
@@ -20,8 +19,8 @@ public class GridTileSwapping : MonoBehaviour
 
         PerformSwap(tile1, tile2, tile1Position, tile2Position);
 
-        bool tile1Matched = _gridGeneration.Matching.CheckForMatches(tile1);
-        bool tile2Matched = _gridGeneration.Matching.CheckForMatches(tile2);
+        bool tile1Matched = _gridGeneration.Matching.CheckForMatches(tile1, fromPlayer: true);
+        bool tile2Matched = _gridGeneration.Matching.CheckForMatches(tile2, fromPlayer: true);
 
         if (!tile1Matched && !tile2Matched)
         {
