@@ -1,23 +1,41 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MedicineMatch : MonoBehaviour
 {
+    [SerializeField]
+    private float _comboWindow = 5f;
+    [SerializeField]
+    private int _maxMoves = 20;
+
     private GridGeneration _gridGeneration;
-    private GridTileSwapping _tileSwapping;
     private GridCascade _gridCascade;
+    private GameUI _gameUI;
+
+    private int _matchComboCount;
+    private bool _firstMatchMade;
+    private Coroutine _comboTimerCoroutine;
+    private float _comboTimeRemaining;
+
+    private const int _maxComboMultiplier = 5;
 
     private void Start()
     {
         _gridGeneration = GetComponent<GridGeneration>();
-        _tileSwapping = GetComponent<GridTileSwapping>();
         _gridCascade = GetComponent<GridCascade>();
+        _gameUI = FindAnyObjectByType<GameUI>();
+
+        _matchComboCount = 1;
+        _firstMatchMade = false;
+        GameData.CurrentMoves = _maxMoves;
+        GameData.MaxMoves = _maxMoves;
     }
 
     /// <summary>
     /// Checks if the given tile is part of a match of 3 or more and destroys them if so.
     /// </summary>
-    public bool CheckForMatches(GameObject current)
+    public bool CheckForMatches(GameObject current, bool fromPlayer = false)
     {
         MedicineData currentData = current.GetComponent<MedicineData>();
         MedicineType targetType = currentData.Type;
@@ -35,11 +53,106 @@ public class MedicineMatch : MonoBehaviour
 
         if (matches.Count >= 3)
         {
+            if (fromPlayer)
+            {
+                DecreaseMoves();
+                HandleCombo();
+            }
+
+            int points = CalculatePoints(matches, currentData);
+            GameData.CurrentPoints += points;
+            UpdateScoreForType(currentData.Type, points);
+
             MatchDestroy(matches);
+
+            _gameUI.UpdateUI();
             return true;
         }
 
         return false;
+    }
+
+    /// <summary>
+    /// Decrements the player's remaining moves by one.
+    /// </summary>
+    private void DecreaseMoves()
+    {
+        GameData.CurrentMoves = Mathf.Max(0, GameData.CurrentMoves - 1);
+    }
+
+    /// <summary>
+    /// Adds the scored points to the correct medicine type score bucket.
+    /// </summary>
+    private void UpdateScoreForType(MedicineType type, int points)
+    {
+        int index = (int)type;
+        if (index >= 0 && index < GameData.ScorePerType.Length)
+            GameData.ScorePerType[index] += points;
+    }
+
+    /// <summary>
+    /// Tracks player matches to build the combo multiplier.
+    /// The first match starts the timer but does not increase the multiplier.
+    /// Each subsequent match within the combo window increases the multiplier, capped at the max.
+    /// </summary>
+    private void HandleCombo()
+    {
+        if (_comboTimerCoroutine != null)
+        {
+            _matchComboCount = Mathf.Min(_matchComboCount + 1, _maxComboMultiplier);
+            GameData.CurrentComboCount = _matchComboCount;
+            StopCoroutine(_comboTimerCoroutine);
+        }
+
+        _firstMatchMade = true;
+        _comboTimeRemaining = _comboWindow;
+        GameData.IsComboActive = _matchComboCount > 1;
+        _comboTimerCoroutine = StartCoroutine(ComboTimerRoutine());
+    }
+
+    /// <summary>
+    /// Counts down the combo window, pausing while cascades are animating, and resets when it expires.
+    /// </summary>
+    private IEnumerator ComboTimerRoutine()
+    {
+        yield return null;
+
+        float elapsed = 0f;
+        float duration = _comboWindow;
+
+        while (elapsed < duration)
+        {
+            if (!GameData.IsAnimating)
+                elapsed += Time.deltaTime;
+
+            _comboTimeRemaining = duration - elapsed;
+            yield return null;
+        }
+
+        ResetCombo();
+    }
+
+    /// <summary>
+    /// Resets the combo multiplier back to 1 and clears all combo state.
+    /// </summary>
+    private void ResetCombo()
+    {
+        _matchComboCount = 1;
+        _firstMatchMade = false;
+        GameData.CurrentComboCount = _matchComboCount;
+        GameData.IsComboActive = false;
+        _comboTimeRemaining = 0f;
+        _comboTimerCoroutine = null;
+        _gameUI.UpdateUI();
+    }
+
+    /// <summary>
+    /// Calculates the points for a match multiplied by the current combo multiplier.
+    /// Cascading matches inherit whatever multiplier is active at the time they trigger.
+    /// </summary>
+    private int CalculatePoints(HashSet<MedicineData> matches, MedicineData target)
+    {
+        return target.Points * matches.Count * _matchComboCount;
     }
 
     /// <summary>
@@ -57,7 +170,6 @@ public class MedicineMatch : MonoBehaviour
         {
             MedicineData target = toCheck.Pop();
 
-            // Use MedicineSelect.Position instead of transform.position for grid lookups
             Vector2Int pos = target.GetComponent<MedicineSelect>().Position;
 
             Vector2Int[] directions = horizontal
@@ -97,10 +209,10 @@ public class MedicineMatch : MonoBehaviour
         List<MedicineData> collectedNeighbors = new List<MedicineData>();
 
         Vector2Int[] directions = {
-            new Vector2Int(pos.x,     pos.y + 1), // up
-            new Vector2Int(pos.x,     pos.y - 1), // down
-            new Vector2Int(pos.x - 1, pos.y),     // left
-            new Vector2Int(pos.x + 1, pos.y),     // right
+            new Vector2Int(pos.x,     pos.y + 1),
+            new Vector2Int(pos.x,     pos.y - 1),
+            new Vector2Int(pos.x - 1, pos.y),
+            new Vector2Int(pos.x + 1, pos.y),
         };
 
         foreach (Vector2Int dir in directions)
