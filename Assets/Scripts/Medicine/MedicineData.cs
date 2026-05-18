@@ -15,19 +15,19 @@ public class MedicineData : MonoBehaviour
 
         switch (Type)
         {
-            case MedicineType.MedicineType1:
+            case MedicineType.Bandaid:
                 spriteRenderer.sprite = sprites[0];
                 break;
-            case MedicineType.MedicineType2:
+            case MedicineType.EHBO_Kit:
                 spriteRenderer.sprite = sprites[1];
                 break;
-            case MedicineType.MedicineType3:
+            case MedicineType.IV_Bag:
                 spriteRenderer.sprite = sprites[2];
                 break;
-            case MedicineType.MedicineType4:
+            case MedicineType.Needle:
                 spriteRenderer.sprite = sprites[3];
                 break;
-            case MedicineType.MedicineType5:
+            case MedicineType.Pill:
                 spriteRenderer.sprite = sprites[4];
                 break;
         }

@@ -1,19 +1,25 @@
 using UnityEngine;
-
+using UnityEngine.UIElements;
+using TMPro;
 public class LoadLevelData : MonoBehaviour
 {
-
+    private TMP_Text _description;
     private void FindDataToLoad()
     {
-
         GameData.CurrentLevel = GameData.SelectedLevelButton.GetComponent<AssignedLevelData>().AssignedData;
+    }
+
+    public void loadlevelDescription()
+    {
+        FindDataToLoad();
+        
     }
 
     public void LoadData()
     {
         FindDataToLoad();
         GameData.CurrentRound = GameData.CurrentLevel.Rounds;
-        GameData.CurrentMoveAmount = GameData.CurrentLevel.MovesPerRound;
+        GameData.CurrentMoves = GameData.CurrentLevel.MovesPerRound;
         GameData.CurrentTimeInSeconds = GameData.CurrentLevel.MaxTimeInSeconds;
         GameData.CurrentPoints = 0;
         Debug.Log("Data loaded!");
@@ -21,7 +27,7 @@ public class LoadLevelData : MonoBehaviour
 
     public void ResetMoves()
     {
-        GameData.CurrentMoveAmount = GameData.CurrentLevel.MovesPerRound;
+        GameData.CurrentMoves = GameData.CurrentLevel.MovesPerRound;
     }
 
 }

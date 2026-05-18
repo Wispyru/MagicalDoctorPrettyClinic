@@ -16,3 +16,4 @@ MonoBehaviour:
   MovesPerRound: 10
   MaxTimeInSeconds: 300
   RequiredPoints: 1250
+  Description: This is the description for level one's illness.

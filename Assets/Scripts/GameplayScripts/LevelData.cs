@@ -7,4 +7,5 @@ public class LevelData : ScriptableObject
     public int MovesPerRound;
     public float MaxTimeInSeconds;
     public int RequiredPoints;
+    [TextArea] public string Description;
 }

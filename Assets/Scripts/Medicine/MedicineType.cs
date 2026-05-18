@@ -1,10 +1,13 @@
 using UnityEngine;
 
+/// <summary>
+/// The type that will be assigned to the medicine.
+/// </summary>
 public enum MedicineType
 {
-   MedicineType1,
-   MedicineType2,
-   MedicineType3,
-   MedicineType4,
-   MedicineType5,
+   Bandaid,
+   EHBO_Kit,
+   IV_Bag,
+   Needle,
+   Pill,
 }

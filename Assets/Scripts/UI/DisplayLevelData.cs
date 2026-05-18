@@ -5,6 +5,8 @@ public class DisplayLevelData : MonoBehaviour
     public TMP_Text TimeText;
     public TMP_Text RoundText;
     public TMP_Text MovesText;
+    public TMP_Text PointsText;
+
     private GameplayTimer _timer;
     private LoadLevelData _levelData;
     private void Start()
@@ -23,18 +25,16 @@ public class DisplayLevelData : MonoBehaviour
 
         }
 
-        if (GameData.CurrentMoveAmount == 0)
-        {
-            updateRound();
-            UpdateUIText();
-        }
     }
 
     public void UpdateUIText()
     {
+        if(GameData.CurrentMoves == 0) updateRound();
         RoundText.text = "Rounds left: " + GameData.CurrentRound.ToString();
-        MovesText.text = "Moves: " + GameData.CurrentMoveAmount.ToString();
+        MovesText.text = "Moves: " + GameData.CurrentMoves.ToString();
+        PointsText.text = "Points: " + GameData.CurrentPoints.ToString();
     }
+
 
     private void updateTimerText()
     {

@@ -29,11 +29,7 @@ public class GridTileSwapping : MonoBehaviour
             PerformSwap(tile1, tile2, tile2Position, tile1Position);
         }
 
-        if (GameData.CurrentMoveAmount != 0) 
-        {
-            GameData.CurrentMoveAmount--;
-            _displayLevelData.UpdateUIText();
-        }
+
 
     }
 
@@ -50,5 +46,11 @@ public class GridTileSwapping : MonoBehaviour
 
         tile1.GetComponent<MedicineSelect>().Position = tile2Position;
         tile2.GetComponent<MedicineSelect>().Position = tile1Position;
+
+        if (GameData.CurrentMoves != 0)
+        {
+            GameData.CurrentMoves--;
+            _displayLevelData.UpdateUIText();
+        }
     }
 }
