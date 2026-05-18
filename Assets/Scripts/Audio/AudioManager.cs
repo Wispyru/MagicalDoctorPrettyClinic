@@ -4,11 +4,13 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
-    [Header("Audio Source")]
+    [Header("Audio Sources")]
     [SerializeField] private AudioSource _musicSource;
+    [SerializeField] private AudioSource _sfxSource;
 
-    [Header("Audio Clip")]
+    [Header("Audio Clips")]
     [SerializeField] private AudioClip _backgroundMusic;
+    [SerializeField] private AudioClip _lockedSFX; // Universal locked sound
 
     private void Awake()
     {
@@ -40,5 +42,23 @@ public class AudioManager : MonoBehaviour
     {
         _musicSource.clip = _backgroundMusic;
         _musicSource.Play();
+    }
+
+    /// <summary>
+    /// Plays any given SFX clip once through the SFX audio source.
+    /// Called by UISound for button click sounds.
+    /// </summary>
+    public void PlaySFX(AudioClip clip)
+    {
+        _sfxSource.PlayOneShot(clip);
+    }
+
+    /// <summary>
+    /// Plays the universal locked sound effect.
+    /// Called by UISound when a locked button is clicked.
+    /// </summary>
+    public void PlayLockedSFX()
+    {
+        _sfxSource.PlayOneShot(_lockedSFX);
     }
 }
