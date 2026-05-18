@@ -7,14 +7,8 @@ public class LoadLevelData : MonoBehaviour
     private void FindDataToLoad()
     {
         GameData.CurrentLevel = GameData.SelectedLevelButton.GetComponent<AssignedLevelData>().AssignedData;
+        Debug.Log(GameData.CurrentLevel);
     }
-
-    public void loadlevelDescription()
-    {
-        FindDataToLoad();
-        
-    }
-
     public void LoadData()
     {
         FindDataToLoad();

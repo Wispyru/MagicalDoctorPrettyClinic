@@ -1196,6 +1196,34 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6810892243436557102, guid: ec67bc32ceb02e146a832bbd14bb9add, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6810892243436557102, guid: ec67bc32ceb02e146a832bbd14bb9add, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6810892243436557102, guid: ec67bc32ceb02e146a832bbd14bb9add, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1273262759}
+    - target: {fileID: 6810892243436557102, guid: ec67bc32ceb02e146a832bbd14bb9add, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6810892243436557102, guid: ec67bc32ceb02e146a832bbd14bb9add, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: LoadData
+      objectReference: {fileID: 0}
+    - target: {fileID: 6810892243436557102, guid: ec67bc32ceb02e146a832bbd14bb9add, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: LoadLevelData, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6810892243436557102, guid: ec67bc32ceb02e146a832bbd14bb9add, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2852,7 +2880,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 848738540}
-  - component: {fileID: 848738541}
   m_Layer: 5
   m_Name: Level Buttons
   m_TagString: Untagged
@@ -2883,28 +2910,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &848738541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 848738539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b836d9cb5916968449ddd4b58854db6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelButtonAnimation
-  _levelButtons:
-  - {fileID: 1273262754}
-  - {fileID: 414026611}
-  - {fileID: 760223139}
-  - {fileID: 1105075328}
-  _punchScale: 0.4
-  _punchDuration: 0.4
-  _shakeDuration: 0.4
-  _shakeStrength: 5
-  _shakeVibrato: 5
 --- !u!1 &872505977
 GameObject:
   m_ObjectHideFlags: 0
@@ -4427,6 +4432,10 @@ GameObject:
   - component: {fileID: 1273262755}
   - component: {fileID: 1273262754}
   - component: {fileID: 1273262757}
+  - component: {fileID: 1273262760}
+  - component: {fileID: 1273262759}
+  - component: {fileID: 1273262758}
+  - component: {fileID: 1273262761}
   m_Layer: 6
   m_Name: Level 1
   m_TagString: Untagged
@@ -4498,10 +4507,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1273262757}
-        m_TargetAssemblyTypeName: UISound, Assembly-CSharp
-        m_MethodName: PlayButtonSound
-        m_Mode: 1
+      - m_Target: {fileID: 1492244505}
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: OnLevelButtonClicked
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4562,6 +4571,74 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UISound
   _clickSFX: {fileID: 8300000, guid: 12a64e131918b8f4cbc961c52907e2bb, type: 3}
   _isLocked: 0
+--- !u!114 &1273262758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273262752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e6ae350246f57458ad344a6f7d0b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwapScene
+  SceneIndex: 2
+--- !u!114 &1273262759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273262752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2afe5b579f6b6d2408afab4375f4322a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LoadLevelData
+--- !u!114 &1273262760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273262752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 053b5e63588e14d48ae8afd5f8f5873c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AssignedLevelData
+  AssignedData: {fileID: 11400000, guid: fa6a74a43ddcd9742a253c3df27f36f2, type: 2}
+--- !u!114 &1273262761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273262752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60b19e8a082c23c48909ac28cd3d604d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelMenu
+  LevelButtons:
+  - {fileID: 1273262754}
+  - {fileID: 414026611}
+  - {fileID: 760223139}
+  - {fileID: 1105075328}
+  _TemporaryLevelData: []
+  _descriptionPanel: {fileID: 0}
+  _descriptionPanelRect: {fileID: 0}
+  _panelHiddenPosY: 0
+  _panelShownPosY: 0
+  _panelTweenDuration: 0
+  _levelNameText: {fileID: 0}
+  _descriptionText: {fileID: 0}
+  _minimumScoreText: {fileID: 0}
+  _playerScoreText: {fileID: 0}
+  _starRating: {fileID: 0}
+  _proceedButton: {fileID: 0}
+  _closeButton: {fileID: 0}
 --- !u!1 &1282176338
 GameObject:
   m_ObjectHideFlags: 0
