@@ -1,46 +1,96 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class VolumeSettings : MonoBehaviour
 {
-    [SerializeField] private AudioMixer myMixer;
-    [SerializeField] private Slider musicSlider;
-    //[SerializeField] private Slider SFXSlider;
+    [Header("Audio Mixer")]
+    [SerializeField] private AudioMixer _audioMixer;
+
+    [Header("Sliders")]
+    [SerializeField] private Slider _musicSlider;
+    [SerializeField] private Slider _sfxSlider;
+
+    private const string MusicVolumeKey = "musicVolume";
+    private const string SFXVolumeKey = "sfxVolume";
+    private const string MusicMixerParam = "music";
+    private const string SFXMixerParam = "sfx";
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("musicVolume"))
-        {
-            LoadVolume();
-        }
-        else
-        {
-            SetMusicVolume();
-        }
+        StartCoroutine(LoadVolumeNextFrame());
     }
 
-    public void SetMusicVolume()
+    /// <summary>
+    /// Waits one frame before applying volume so the AudioMixer
+    /// is fully initialized and SetFloat calls succeed correctly.
+    /// </summary>
+    private IEnumerator LoadVolumeNextFrame()
     {
-        float volume = musicSlider.value;
-        myMixer.SetFloat("music", Mathf.Log10(volume) * 20); // "music" is the name of the exposed parameter in the audiomixer    
-        PlayerPrefs.SetFloat("musicVolume", volume); // saves the data of the players prefrence in the music slider
+        yield return null;
+        LoadVolume();
     }
 
-    //public void SetSFXVolume()
-    //{
-    //float volume = SFXSlider.value;
-    //mixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
-    //PlayerPrefs.SetFloat("SFXVolume", volume);
-    //}
-
+    /// <summary>
+    /// Loads saved volume values from PlayerPrefs and applies them
+    /// to both sliders and the mixer. Defaults to 1 if not saved yet.
+    /// </summary>
     private void LoadVolume()
     {
-        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
-        //SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        float savedMusic = PlayerPrefs.GetFloat(MusicVolumeKey, 1f);
+        float savedSFX = PlayerPrefs.GetFloat(SFXVolumeKey, 1f);
 
-        SetMusicVolume();
-        //SetSFXVolume();
+        if (_musicSlider != null)
+        {
+            _musicSlider.value = savedMusic;
+            ApplyVolume(MusicMixerParam, savedMusic);
+        }
 
+        if (_sfxSlider != null)
+        {
+            _sfxSlider.value = savedSFX;
+            ApplyVolume(SFXMixerParam, savedSFX);
+        }
+    }
+
+    /// <summary>
+    /// Called by the music slider OnValueChanged event in the Inspector.
+    /// </summary>
+    public void SetMusicVolume()
+    {
+        if (_musicSlider == null) return;
+        float volume = _musicSlider.value;
+        ApplyVolume(MusicMixerParam, volume);
+        SaveVolume(MusicVolumeKey, volume);
+    }
+
+    /// <summary>
+    /// Called by the SFX slider OnValueChanged event in the Inspector.
+    /// </summary>
+    public void SetSFXVolume()
+    {
+        if (_sfxSlider == null) return;
+        float volume = _sfxSlider.value;
+        ApplyVolume(SFXMixerParam, volume);
+        SaveVolume(SFXVolumeKey, volume);
+    }
+
+    /// <summary>
+    /// Converts a linear slider value to logarithmic decibels
+    /// and applies it to the given audio mixer parameter.
+    /// </summary>
+    private void ApplyVolume(string mixerParam, float volume)
+    {
+        _audioMixer.SetFloat(mixerParam, Mathf.Log10(volume) * 20);
+    }
+
+    /// <summary>
+    /// Saves a volume value to PlayerPrefs under the given key.
+    /// </summary>
+    private void SaveVolume(string key, float volume)
+    {
+        PlayerPrefs.SetFloat(key, volume);
+        PlayerPrefs.Save();
     }
 }
