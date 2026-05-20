@@ -13,7 +13,7 @@ public class MedicineDrag : MonoBehaviour
 
     [Range(0.5f, 2f)]
     public float DragRangeMultiplier = 1f;
-    private const float DragThreshold = 0.2f;
+    private const float _dragThreshold = 0.2f;
 
     public Vector3 OriginalPosition => _originalPosition;
 
@@ -74,7 +74,7 @@ public class MedicineDrag : MonoBehaviour
         Vector3 currentMousePos = GetMouseWorldPos();
         float dragDistance = Vector3.Distance(_dragStartWorldPos, currentMousePos);
 
-        if (!_isDragging && dragDistance >= DragThreshold)
+        if (!_isDragging && dragDistance >= _dragThreshold)
         {
             _isDragging = true;
 
