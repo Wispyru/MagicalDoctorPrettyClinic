@@ -7,36 +7,37 @@ using UnityEngine.UI;
 
 public class LevelButtonAnimation : MonoBehaviour
 {
+    [Header("Buttons")]
     [SerializeField] private Button[] _levelButtons;
+
+    [Header("Unlock Animation Settings")]
     [SerializeField] private float _punchScale;
     [SerializeField] private float _punchDuration;
+
+    [Header("Lock Animation Settings")]
     [SerializeField] private float _shakeDuration;
     [SerializeField] private float _shakeStrength;
     [SerializeField] private int _shakeVibrato;
 
     private HashSet<RectTransform> _animatingButtons = new HashSet<RectTransform>();
 
-    private void Start()
+    private void Awake()
     {
         RegisterHoverListeners();
     }
 
     /// <summary>
-    /// Kills all active tweens on destroy to prevent callbacks firing on destroyed objects.
+    /// Kills all active tweens when the GameObject is destroyed
+    /// to prevent OnComplete callbacks firing on destroyed objects.
     /// </summary>
     private void OnDestroy()
     {
-        foreach (RectTransform rectTransform in _animatingButtons)
-        {
-            if (rectTransform != null)
-                rectTransform.DOKill();
-        }
-        _animatingButtons.Clear();
+        StopAllButtonAnimations();
     }
 
     /// <summary>
-    /// Adds a hover listener to each button using EventTrigger.
-    /// Unlocked buttons play a punch, locked buttons play a shake.
+    /// Loops through all level buttons and adds a PointerEnter
+    /// EventTrigger to each one.
     /// </summary>
     private void RegisterHoverListeners()
     {
@@ -49,7 +50,7 @@ public class LevelButtonAnimation : MonoBehaviour
     }
 
     /// <summary>
-    /// Gets the existing EventTrigger on a button or adds one if missing.
+    /// Returns the EventTrigger on a button, adding one if it doesn't exist.
     /// </summary>
     private EventTrigger GetOrAddEventTrigger(Button button)
     {
@@ -60,7 +61,7 @@ public class LevelButtonAnimation : MonoBehaviour
     }
 
     /// <summary>
-    /// Adds a PointerEnter entry to the EventTrigger that plays the correct animation.
+    /// Adds a PointerEnter entry to the EventTrigger that fires OnButtonHovered.
     /// </summary>
     private void AddHoverEntry(EventTrigger trigger, Button button)
     {
@@ -71,8 +72,9 @@ public class LevelButtonAnimation : MonoBehaviour
     }
 
     /// <summary>
-    /// Checks if the button's CanvasGroup allows interaction to decide which animation to play.
-    /// Ignores the hover entirely if the button is already animating.
+    /// Fires when the player hovers over a button.
+    /// Reads the CanvasGroup to check if locked and plays the correct animation.
+    /// Ignores the hover if the button is already animating.
     /// </summary>
     private void OnButtonHovered(Button button)
     {
@@ -85,42 +87,54 @@ public class LevelButtonAnimation : MonoBehaviour
         bool isUnlocked = canvasGroup == null || canvasGroup.interactable;
 
         if (isUnlocked)
-        {
             PlayUnlockedAnimation(rectTransform);
-        }
         else
-        {
             PlayLockedAnimation(rectTransform);
-        }
     }
 
     /// <summary>
-    /// Punches the button scale outward when hovered to invite the player to click.
-    /// Registers the button as animating and clears it when done.
+    /// Punches the button scale outward on hover.
     /// </summary>
     private void PlayUnlockedAnimation(RectTransform rectTransform)
     {
-        _animatingButtons.Add(rectTransform);
-        rectTransform.DOPunchScale(Vector3.one * _punchScale, _punchDuration)
-            .OnComplete(() =>
-            {
-                if (rectTransform != null)
-                    _animatingButtons.Remove(rectTransform);
-            });
+        PlayAnimation(rectTransform,
+            rectTransform.DOPunchScale(Vector3.one * _punchScale, _punchDuration));
     }
 
     /// <summary>
-    /// Shakes the button rotation when hovered to signal it cannot be played.
-    /// Registers the button as animating and clears it when done.
+    /// Shakes the button rotation on hover to signal it is locked.
     /// </summary>
     private void PlayLockedAnimation(RectTransform rectTransform)
     {
+        PlayAnimation(rectTransform,
+            rectTransform.DOShakeRotation(_shakeDuration,
+                new Vector3(0, 0, _shakeStrength), _shakeVibrato));
+    }
+
+    /// <summary>
+    /// Registers a button as animating and removes it from the set
+    /// once the tween completes. Shared by all animation types.
+    /// </summary>
+    private void PlayAnimation(RectTransform rectTransform, Tween tween)
+    {
         _animatingButtons.Add(rectTransform);
-        rectTransform.DOShakeRotation(_shakeDuration, new Vector3(0, 0, _shakeStrength), _shakeVibrato)
-            .OnComplete(() =>
-            {
-                if (rectTransform != null)
-                    _animatingButtons.Remove(rectTransform);
-            });
+        tween.OnComplete(() =>
+        {
+            if (rectTransform != null)
+                _animatingButtons.Remove(rectTransform);
+        });
+    }
+
+    /// <summary>
+    /// Kills all active tweens on all currently animating buttons.
+    /// </summary>
+    private void StopAllButtonAnimations()
+    {
+        foreach (RectTransform rectTransform in _animatingButtons)
+        {
+            if (rectTransform != null)
+                rectTransform.DOKill();
+        }
+        _animatingButtons.Clear();
     }
 }
