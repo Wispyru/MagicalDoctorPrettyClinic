@@ -6,6 +6,8 @@ public class StarRating : MonoBehaviour
     [SerializeField] private Image[] _stars; // Array of 3 star images
     private Color _filledStarColor = Color.yellow;
     private Color _emptyStarColor = Color.gray;
+    [SerializeField] private Sprite _emptyStarSprite;
+    [SerializeField] private Sprite _filledStarSprite;
 
     /// <summary>
     /// Updates the star display based on the player's score percentage.
@@ -28,7 +30,7 @@ public class StarRating : MonoBehaviour
 
         for (int i = 0; i < _stars.Length; i++)
         {
-            _stars[i].color = i < starsToFill ? _filledStarColor : _emptyStarColor;
+            _stars[i].sprite = i < starsToFill ? _filledStarSprite : _emptyStarSprite;
         }
     }
 

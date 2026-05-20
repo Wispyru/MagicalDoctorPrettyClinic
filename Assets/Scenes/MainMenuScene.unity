@@ -2434,7 +2434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac96f626cd0dc224493c8b92970ad86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugLevelSystem
-  _showDebugPanel: 0
+  _showDebugPanel: 1
 --- !u!1 &1156509816
 GameObject:
   m_ObjectHideFlags: 0
