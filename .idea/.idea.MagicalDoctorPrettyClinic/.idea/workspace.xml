@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9e5b2d6-d375-48da-bb59-277048dde97e" name="Changes" comment="" />
+    <list default="true" id="f9e5b2d6-d375-48da-bb59-277048dde97e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MagicalDoctorPrettyClinic/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MagicalDoctorPrettyClinic/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Medicine/MedicineDrag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Medicine/MedicineDrag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Medicine/MedicinePreview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Medicine/MedicinePreview.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +38,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/yokai-data&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/tile-swipe-swap&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -103,6 +107,8 @@
       <workItem from="1775737203710" duration="1727000" />
       <workItem from="1777015828834" duration="1001000" />
       <workItem from="1778138178604" duration="2922000" />
+      <workItem from="1779179424885" duration="2594000" />
+      <workItem from="1779265310278" duration="968000" />
     </task>
     <servers />
   </component>
