@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 7172628832697176522}
   - component: {fileID: 4361221273886199591}
   - component: {fileID: -1592846832965531743}
+  - component: {fileID: 1015029867911759612}
   - component: {fileID: 8307675076691570064}
   - component: {fileID: -9081396281242735480}
+  - component: {fileID: 268507070972971512}
   m_Layer: 3
   m_Name: MedicineItem
   m_TagString: Medicine
@@ -114,6 +116,18 @@ MonoBehaviour:
   - {fileID: 9068799368527593230, guid: ea4406e642b370c4cb656ac916d315fb, type: 3}
   - {fileID: -827574650542409969, guid: 30c760c31ac07fd40accb4006b163dfa, type: 3}
   Points: 5
+--- !u!114 &1015029867911759612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5510088235488066711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa570436a5892945bda01c878c892c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MedicinePreview
 --- !u!61 &8307675076691570064
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -172,3 +186,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55709bb355217094ba8242b71dcaae34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridTileSwapping
+--- !u!114 &268507070972971512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5510088235488066711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffc38eceb48d0644925bce199d96dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MedicineDrag
+  DragRangeMultiplier: 1
