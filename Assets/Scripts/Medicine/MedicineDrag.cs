@@ -7,7 +7,6 @@ public class MedicineDrag : MonoBehaviour
     private MedicinePreview _preview;
 
     private Vector3 _originalPosition;
-    public Vector3 OriginalPosition => _originalPosition;
     private Vector3 _dragStartWorldPos;
     private bool _isDragging = false;
     private float _tileSize;
@@ -15,6 +14,8 @@ public class MedicineDrag : MonoBehaviour
     [Range(0.5f, 2f)]
     public float DragRangeMultiplier = 1f;
     private const float DragThreshold = 0.2f;
+
+    public Vector3 OriginalPosition => _originalPosition;
 
     private void Start()
     {
@@ -25,9 +26,28 @@ public class MedicineDrag : MonoBehaviour
         _tileSize = GetGridSpacing();
     }
 
+    public void ForceOriginalPosition(Vector3 pos)
+    {
+        _originalPosition = pos;
+    }
+
+    public Vector3 GetAuthorativePosition()
+    {
+        GridGeneration grid = FindFirstObjectByType<GridGeneration>();
+        if (grid != null)
+            return grid.GetWorldPosition(_select.Position.x, _select.Position.y);
+        return _originalPosition;
+    }
+
     public void ResetToCurrentPosition()
     {
-        _originalPosition = transform.position;
+        GridGeneration grid = FindFirstObjectByType<GridGeneration>();
+        if (grid != null)
+            _originalPosition = grid.GetWorldPosition(_select.Position.x, _select.Position.y);
+        else
+            _originalPosition = transform.position;
+
+        transform.position = _originalPosition;
         _tileSize = GetGridSpacing();
     }
 
@@ -37,7 +57,13 @@ public class MedicineDrag : MonoBehaviour
 
         _isDragging = false;
         _dragStartWorldPos = GetMouseWorldPos();
-        _originalPosition = transform.position;
+
+        GridGeneration grid = FindFirstObjectByType<GridGeneration>();
+        if (grid != null)
+            _originalPosition = grid.GetWorldPosition(_select.Position.x, _select.Position.y);
+        else
+            _originalPosition = transform.position;
+
         _tileSize = GetGridSpacing();
     }
 
