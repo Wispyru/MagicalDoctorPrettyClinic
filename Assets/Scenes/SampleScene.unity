@@ -822,6 +822,7 @@ MonoBehaviour:
   - {fileID: 9068799368527593230, guid: ea4406e642b370c4cb656ac916d315fb, type: 3}
   - {fileID: -827574650542409969, guid: 30c760c31ac07fd40accb4006b163dfa, type: 3}
   _comboText: {fileID: 1647404256}
+  _totalPointsText: {fileID: 1260396984}
   _medicineSprites:
   - {fileID: 5357667892696785996, guid: 763a545e6d01b044eb8e52415935f1f1, type: 3}
   - {fileID: -1099226531044006708, guid: de47de752a8716941bfa07bcd636f1d5, type: 3}
