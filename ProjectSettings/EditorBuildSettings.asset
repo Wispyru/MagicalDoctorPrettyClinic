@@ -15,7 +15,10 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/GameOverScreen.unity
+    path: Assets/Scenes/WinnerScreen.unity
     guid: 0e3e9a83351e9934881374efa7319f46
+  - enabled: 1
+    path: Assets/Scenes/LoseScreen.unity
+    guid: bd02affe7ff20804c9bab19a2840a5d2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3590b91b4603b465dbb4216d601bff33, type: 3}

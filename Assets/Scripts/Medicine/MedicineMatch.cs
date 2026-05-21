@@ -11,6 +11,7 @@ public class MedicineMatch : MonoBehaviour
     private GridCascade _gridCascade;
     private GameUI _gameUI;
 
+    private WinLoseCondition _winLoseCondition;
     private int _matchComboCount;
     private Coroutine _comboTimerCoroutine;
     private float _comboTimeRemaining;
@@ -24,6 +25,7 @@ public class MedicineMatch : MonoBehaviour
         _gridCascade = GetComponent<GridCascade>();
         _gameUI = FindAnyObjectByType<GameUI>();
         _playAnimation = FindAnyObjectByType<PlayAnimation>();
+        _winLoseCondition = FindAnyObjectByType<WinLoseCondition>();
 
         _matchComboCount = 1;
 
@@ -63,6 +65,7 @@ public class MedicineMatch : MonoBehaviour
             MatchDestroy(matches);
             _playAnimation?.PlayAttackAnimation();
             _gameUI.UpdateUI();
+            _winLoseCondition.CheckForOutOfMoves();
             return true;
         }
 
