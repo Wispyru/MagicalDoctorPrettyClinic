@@ -61,7 +61,7 @@ public class WinLoseCondition : MonoBehaviour
 
         yield return new WaitUntil(() => _clipFinished);
 
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(sceneIndex);
     }
 
     private void OnClipFinished(VideoPlayer vp)
