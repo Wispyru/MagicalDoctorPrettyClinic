@@ -1,6 +1,7 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
-using TMPro;
+using UnityEngine.Video;
 public class LoadLevelData : MonoBehaviour
 {
     private TMP_Text _description;
@@ -16,7 +17,13 @@ public class LoadLevelData : MonoBehaviour
         GameData.CurrentMoves = GameData.CurrentLevel.MovesPerRound;
         GameData.CurrentTimeInSeconds = GameData.CurrentLevel.MaxTimeInSeconds;
         GameData.CurrentPoints = 0;
-        Debug.Log("Data loaded!");
+
+        GameData.CurrentStartingAnimation = GameData.CurrentLevel.StartingAnimation;
+        GameData.CurrentIdleAnimation = GameData.CurrentLevel.IdleAnimation; 
+        GameData.CurrentAttackAnimation = GameData.CurrentLevel.AttackAnimation;
+        GameData.CurrentWinAnimation = GameData.CurrentLevel.WinAnimation;
+        GameData.CurrentLoseAnimation = GameData.CurrentLevel.LoseAnimation;
+    Debug.Log("Data loaded!");
     }
 
     public void ResetMoves()

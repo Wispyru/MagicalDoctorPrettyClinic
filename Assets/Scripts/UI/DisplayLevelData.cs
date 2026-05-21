@@ -46,7 +46,10 @@ public class DisplayLevelData : MonoBehaviour
 
     private void updateRound()
     {
-        GameData.CurrentRound--;
-        _levelData.ResetMoves();    
+        if(GameData.CurrentRound > 0)
+        {
+            GameData.CurrentRound--;
+            _levelData.ResetMoves();
+        }
     }
 }

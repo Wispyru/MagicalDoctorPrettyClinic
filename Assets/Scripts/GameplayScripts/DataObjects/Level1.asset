@@ -15,5 +15,10 @@ MonoBehaviour:
   Rounds: 5
   MovesPerRound: 10
   MaxTimeInSeconds: 300
-  RequiredPoints: 1250
+  RequiredPoints: 2500
   Description: This is the description for level one's illness.
+  StartingAnimation: {fileID: 32900000, guid: 4d9d9ab40d8371343b664f9e966c4054, type: 3}
+  IdleAnimation: {fileID: 32900000, guid: ef69833c5ee9cda40b11925d6f505f2c, type: 3}
+  AttackAnimation: {fileID: 32900000, guid: b655ef3fa48c8d9439b407033cdfed14, type: 3}
+  WinAnimation: {fileID: 32900000, guid: 36480ae2d3fea3e409ffbfffb85bda08, type: 3}
+  LoseAnimation: {fileID: 32900000, guid: 013b29882e729534ca8809d71fabd1fc, type: 3}
