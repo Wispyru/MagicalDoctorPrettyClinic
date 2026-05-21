@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0aca041cc52d4c44b466663e4c20f04, type: 3}
+  m_Name: Level2
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  Rounds: 8
+  MovesPerRound: 10
+  MaxTimeInSeconds: 12
+  RequiredPoints: 200
+  Description: This is the description for level two''s illness.
+  StartingAnimation: {fileID: 32900000, guid: 114729822b8e6cc4b8f3da07fdb37b71, type: 3}
+  IdleAnimation: {fileID: 32900000, guid: 674b918c1437f9347a933d46571e01e8, type: 3}
+  AttackAnimation: {fileID: 32900000, guid: f895cabc822d93d41854dd853be9be1e, type: 3}
+  WinAnimation: {fileID: 32900000, guid: 9b1715b2fe97bc1449fe7d5f8700dd66, type: 3}
+  LoseAnimation: {fileID: 32900000, guid: 5a778a5b625c58d4eb3e8bb090d0a93c, type: 3}
