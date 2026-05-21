@@ -11,9 +11,11 @@ public class MedicineMatch : MonoBehaviour
     private GridCascade _gridCascade;
     private GameUI _gameUI;
 
+    private WinLoseCondition _winLoseCondition;
     private int _matchComboCount;
     private Coroutine _comboTimerCoroutine;
     private float _comboTimeRemaining;
+    private PlayAnimation _playAnimation;
 
     private const int _maxComboMultiplier = 5;
 
@@ -22,6 +24,8 @@ public class MedicineMatch : MonoBehaviour
         _gridGeneration = GetComponent<GridGeneration>();
         _gridCascade = GetComponent<GridCascade>();
         _gameUI = FindAnyObjectByType<GameUI>();
+        _playAnimation = FindAnyObjectByType<PlayAnimation>();
+        _winLoseCondition = FindAnyObjectByType<WinLoseCondition>();
 
         _matchComboCount = 1;
     }
@@ -56,8 +60,9 @@ public class MedicineMatch : MonoBehaviour
             UpdateScoreForType(currentData.Type, points);
 
             MatchDestroy(matches);
-
+            _playAnimation?.PlayAttackAnimation();
             _gameUI.UpdateUI();
+            _winLoseCondition.CheckForOutOfMoves();
             return true;
         }
 
@@ -177,42 +182,6 @@ public class MedicineMatch : MonoBehaviour
         }
 
         return matches;
-    }
-
-    /// <summary>
-    /// Gets all valid neighbours of the given tile.
-    /// </summary>
-    private List<MedicineData> GetNeighbours(Transform current)
-    {
-        Vector2Int pos = current.GetComponent<MedicineSelect>().Position;
-
-        if (!IsValid(pos.x, pos.y)) return null;
-
-        List<MedicineData> collectedNeighbors = new List<MedicineData>();
-
-        Vector2Int[] directions = {
-            new Vector2Int(pos.x,     pos.y + 1),
-            new Vector2Int(pos.x,     pos.y - 1),
-            new Vector2Int(pos.x - 1, pos.y),
-            new Vector2Int(pos.x + 1, pos.y),
-        };
-
-        foreach (Vector2Int dir in directions)
-        {
-            if (IsValid(dir.x, dir.y))
-                TryAddNeighbour(dir.x, dir.y, collectedNeighbors);
-        }
-
-        return collectedNeighbors;
-    }
-
-    /// <summary>
-    /// Tries to add a neighbour tile to the list.
-    /// </summary>
-    private void TryAddNeighbour(int x, int y, List<MedicineData> neighbours)
-    {
-        MedicineData neighbour = _gridGeneration.Grid[x, y].GetComponent<MedicineData>();
-        neighbours.Add(neighbour);
     }
 
     /// <summary>

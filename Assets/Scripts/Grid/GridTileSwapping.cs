@@ -43,7 +43,7 @@ public class GridTileSwapping : MonoBehaviour
         tile1.GetComponent<MedicineSelect>().Position = tile2Position;
         tile2.GetComponent<MedicineSelect>().Position = tile1Position;
 
-        if (GameData.CurrentMoves != 0)
+        if (GameData.CurrentMoves != 0 && GameData.CurrentRound >= 0)
         {
             GameData.CurrentMoves--;
             _displayLevelData.UpdateUIText();

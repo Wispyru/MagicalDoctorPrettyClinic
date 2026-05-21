@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: bc1ad4bf6424dc74ca4e6f9e7847fe5f
+guid: a9a835d9405ba544a83f1eb0dcd523b4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6761737615975354716
-    second: IVbag3_0
+      213: 3608570747845588797
+    second: match_icons_PAARS_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IVbag3_0
+      name: match_icons_PAARS_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 109
-        height: 140
+        width: 138
+        height: 139
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c519b98598486dd50800000000000000
-      internalID: 6761737615975354716
+      spriteID: d37b334e9f7341230800000000000000
+      internalID: 3608570747845588797
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IVbag3_0: 6761737615975354716
+      match_icons_PAARS_0: 3608570747845588797
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
