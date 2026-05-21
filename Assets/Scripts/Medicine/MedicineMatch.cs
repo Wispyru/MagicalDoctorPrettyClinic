@@ -6,15 +6,12 @@ public class MedicineMatch : MonoBehaviour
 {
     [SerializeField]
     private float _comboWindow = 5f;
-    [SerializeField]
-    private int _maxMoves = 20;
 
     private GridGeneration _gridGeneration;
     private GridCascade _gridCascade;
     private GameUI _gameUI;
 
     private int _matchComboCount;
-    private bool _firstMatchMade;
     private Coroutine _comboTimerCoroutine;
     private float _comboTimeRemaining;
 
@@ -27,9 +24,7 @@ public class MedicineMatch : MonoBehaviour
         _gameUI = FindAnyObjectByType<GameUI>();
 
         _matchComboCount = 1;
-        _firstMatchMade = false;
-        GameData.CurrentMoves = _maxMoves;
-        GameData.MaxMoves = _maxMoves;
+
     }
 
     /// <summary>
@@ -55,12 +50,12 @@ public class MedicineMatch : MonoBehaviour
         {
             if (fromPlayer)
             {
-                DecreaseMoves();
                 HandleCombo();
             }
 
             int points = CalculatePoints(matches, currentData);
             GameData.CurrentPoints += points;
+
             UpdateScoreForType(currentData.Type, points);
 
             MatchDestroy(matches);
@@ -70,14 +65,6 @@ public class MedicineMatch : MonoBehaviour
         }
 
         return false;
-    }
-
-    /// <summary>
-    /// Decrements the player's remaining moves by one.
-    /// </summary>
-    private void DecreaseMoves()
-    {
-        GameData.CurrentMoves = Mathf.Max(0, GameData.CurrentMoves - 1);
     }
 
     /// <summary>
@@ -104,7 +91,6 @@ public class MedicineMatch : MonoBehaviour
             StopCoroutine(_comboTimerCoroutine);
         }
 
-        _firstMatchMade = true;
         _comboTimeRemaining = _comboWindow;
         GameData.IsComboActive = _matchComboCount > 1;
         _comboTimerCoroutine = StartCoroutine(ComboTimerRoutine());
@@ -138,7 +124,6 @@ public class MedicineMatch : MonoBehaviour
     private void ResetCombo()
     {
         _matchComboCount = 1;
-        _firstMatchMade = false;
         GameData.CurrentComboCount = _matchComboCount;
         GameData.IsComboActive = false;
         _comboTimeRemaining = 0f;

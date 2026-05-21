@@ -4,12 +4,14 @@ public class GameData
 {
     public static MedicineSelect SelectedTile;
     public static bool IsAnimating;
+    public static GameObject SelectedLevelButton;
+    public static LevelData CurrentLevel;
 
-    // Level Data
+    // Curent level states
+    public static int CurrentRound;
     public static float CurrentTimeInSeconds;
-    public static int CurrentMoves;
-    public static int MaxMoves;
     public static int CurrentPoints;
+    public static int CurrentMoves;
     public static int CurrentComboCount;
     public static bool IsComboActive;
 

@@ -94,6 +94,9 @@ public class LevelMenu : MonoBehaviour
     /// </summary>
     public void OnLevelButtonClicked(int levelId)
     {
+        GameData.SelectedLevelButton = LevelButtons[levelId - 1].gameObject;
+       // _descriptionText.text = GameData.CurrentLevel.Description;
+        Debug.Log(GameData.SelectedLevelButton);
         CanvasGroup canvasGroup = LevelButtons[levelId - 1].GetComponent<CanvasGroup>();
         bool isUnlocked = canvasGroup == null || canvasGroup.interactable;
 
@@ -116,7 +119,7 @@ public class LevelMenu : MonoBehaviour
         TemporaryLevelData data = _TemporaryLevelData[index];
 
         _levelNameText.text = data.LevelName;
-        _descriptionText.text = data.Description;
+         
         _minimumScoreText.text = "Min Score: " + data.MinimumScore;
 
         int savedScore = PlayerPrefs.GetInt("Score_Level" + (index + 1), 0);

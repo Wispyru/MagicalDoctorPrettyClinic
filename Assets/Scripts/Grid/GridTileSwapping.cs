@@ -3,10 +3,12 @@ using UnityEngine;
 public class GridTileSwapping : MonoBehaviour
 {
     private GridGeneration _gridGeneration;
+    private DisplayLevelData _displayLevelData;
 
     private void Start()
     {
         _gridGeneration = FindAnyObjectByType<GridGeneration>();
+        _displayLevelData = FindAnyObjectByType<DisplayLevelData>();
     }
 
     public void SwapTiles(Vector2Int tile1Position, Vector2Int tile2Position)
@@ -24,6 +26,8 @@ public class GridTileSwapping : MonoBehaviour
             PerformSwap(tile1, tile2, tile2Position, tile1Position);
         }
 
+
+
         tile1.GetComponent<MedicineDrag>().ResetToCurrentPosition();
         tile2.GetComponent<MedicineDrag>().ResetToCurrentPosition();
     }
@@ -38,5 +42,11 @@ public class GridTileSwapping : MonoBehaviour
 
         tile1.GetComponent<MedicineSelect>().Position = tile2Position;
         tile2.GetComponent<MedicineSelect>().Position = tile1Position;
+
+        if (GameData.CurrentMoves != 0)
+        {
+            GameData.CurrentMoves--;
+            _displayLevelData.UpdateUIText();
+        }
     }
 }

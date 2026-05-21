@@ -9,7 +9,7 @@ public class GameUI : MonoBehaviour
     private TextMeshProUGUI[] _scoreTexts;
 
     [SerializeField]
-    private Image[] _scoreIcons;
+    private Sprite[] _scoreIcons;
 
     [SerializeField]
     private TextMeshProUGUI _comboText;
@@ -39,7 +39,7 @@ public class GameUI : MonoBehaviour
         for (int i = 0; i < _scoreIcons.Length; i++)
         {
             if (i < _medicineSprites.Length)
-                _scoreIcons[i].sprite = _medicineSprites[i];
+                _scoreIcons[i] = _medicineSprites[i];
         }
     }
 
