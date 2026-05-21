@@ -24,7 +24,6 @@ public class MedicineMatch : MonoBehaviour
         _gameUI = FindAnyObjectByType<GameUI>();
 
         _matchComboCount = 1;
-
     }
 
     /// <summary>
@@ -54,8 +53,6 @@ public class MedicineMatch : MonoBehaviour
             }
 
             int points = CalculatePoints(matches, currentData);
-            GameData.CurrentPoints += points;
-
             UpdateScoreForType(currentData.Type, points);
 
             MatchDestroy(matches);

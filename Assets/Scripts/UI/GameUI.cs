@@ -9,10 +9,13 @@ public class GameUI : MonoBehaviour
     private TextMeshProUGUI[] _scoreTexts;
 
     [SerializeField]
-    private Sprite[] _scoreIcons;
+    private Image[] _scoreIcons;
 
     [SerializeField]
     private TextMeshProUGUI _comboText;
+
+    [SerializeField]
+    private TextMeshProUGUI _totalPointsText;
 
     [SerializeField]
     private Sprite[] _medicineSprites;
@@ -39,7 +42,7 @@ public class GameUI : MonoBehaviour
         for (int i = 0; i < _scoreIcons.Length; i++)
         {
             if (i < _medicineSprites.Length)
-                _scoreIcons[i] = _medicineSprites[i];
+                _scoreIcons[i].sprite = _medicineSprites[i];
         }
     }
 
@@ -49,6 +52,7 @@ public class GameUI : MonoBehaviour
     public void UpdateUI()
     {
         UpdateScoreDisplays();
+        UpdateTotalPointsDisplay();
         UpdateComboDisplay();
     }
 
@@ -65,6 +69,21 @@ public class GameUI : MonoBehaviour
             if (i < GameData.ScorePerType.Length)
                 _scoreTexts[i].text = GameData.ScorePerType[i].ToString();
         }
+    }
+
+    /// <summary>
+    /// Calculates the total points as the sum of all medicine type scores and updates the display.
+    /// </summary>
+    private void UpdateTotalPointsDisplay()
+    {
+        if (_totalPointsText == null) return;
+
+        int total = 0;
+        foreach (int score in GameData.ScorePerType)
+            total += score;
+
+        GameData.CurrentPoints = total;
+        _totalPointsText.text = total.ToString();
     }
 
     /// <summary>
