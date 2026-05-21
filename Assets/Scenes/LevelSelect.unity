@@ -251,26 +251,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IllnessDex
   _illnessData:
-  - IllnessName: Worm
-    Description: This is Worm
+  - IllnessName: 'Otitis '
+    Description: A Otitis infection enters through the ear canal, where the worm-like
+      yokai burrows deep and seeks to take over its host. It feeds on sound while
+      whispering commands directly into the brain, causing the victim to act strangely.
+      Over time the host grows pale and distant as the Otitis slowly seizes full
+      control of their body. No ordinary medicine can reach it.
     LockedSprite: {fileID: 3306044837167971234, guid: 80286c19d929be6469d222d28fb12c88, type: 3}
     UnlockedSprite: {fileID: -5877557156445394123, guid: ce4edc8605a998a42a188bb1b9aa189b, type: 3}
     IsUnlocked: 1
-  - IllnessName: Octo
-    Description: This is Octo
+  - IllnessName: Umbra
+    Description: 'A Umbra infection is a terminal illness. Not even the best doctors
+      have ever come up with a way to treat it. The umbrella-like protrusion on its
+      head blocks medicine, and it hides too deep in the body for acupuncture to
+      be effective
+
+      
+
+'
     LockedSprite: {fileID: -6757607289298893452, guid: 7678d21e989a92249bd1e44a7a6a3eec, type: 3}
     UnlockedSprite: {fileID: 224315482611628894, guid: 188800a2915296544b26ef8c55b88991, type: 3}
     IsUnlocked: 1
-  - IllnessName: Cloud
-    Description: This is Cloud
+  - IllnessName: Pneumonia
+    Description: 'Pneumonia infect the lungs and cause various health problems. If
+      a pneumonia leaves its host and gets lost, the person will die and the hpneumonia
+      will transform into a fireball and burn up.
+
+'
     LockedSprite: {fileID: 4209817485242930784, guid: 0f2cdf0e2d74a4748b0ba40ca4bd889b, type: 3}
     UnlockedSprite: {fileID: 8526136734326644515, guid: 7724a0125ddbd4144b2bc5aba7ad2c38, type: 3}
-    IsUnlocked: 0
-  - IllnessName: Square
-    Description: This is Square
+    IsUnlocked: 1
+  - IllnessName: 'Thrombus '
+    Description: "A person infected with Thrombus pale, with thin and emaciated cheeks.
+      The victim\u2019s entire body becomes weak and worn out. This infection can
+      be cured by vomiting up Thrombus. When a Thrombus smashed, its body rips open
+      and an enormous blood clot is released caution is advised.\r\n"
     LockedSprite: {fileID: 6565042627484927602, guid: 6bc9d6ebd7a64a74baa6411f844a75ac, type: 3}
     UnlockedSprite: {fileID: -6529684237482891710, guid: dfc3e671d4f9e1341b1ddb0b7274b3c5, type: 3}
-    IsUnlocked: 0
+    IsUnlocked: 1
   _illnessButtons:
   - {fileID: 609166011}
   - {fileID: 792272063}
@@ -796,7 +814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &247839314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1602,6 +1620,81 @@ MonoBehaviour:
   _audioMixer: {fileID: 24100000, guid: c4ab4a51b120eeb42bf574df2c80be25, type: 2}
   _musicSlider: {fileID: 1158925336}
   _sfxSlider: {fileID: 737815451}
+--- !u!1 &536584056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 536584057}
+  - component: {fileID: 536584059}
+  - component: {fileID: 536584058}
+  m_Layer: 6
+  m_Name: Name Border
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &536584057
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536584056}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.9989567}
+  m_LocalScale: {x: 2.3069544, y: 2.3069544, z: 2.3069544}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1740867060}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 9.952423, y: 1543}
+  m_SizeDelta: {x: 250, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &536584058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536584056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.40784317, g: 0.08235294, b: 0.3803922, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &536584059
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536584056}
+  m_CullTransparentMesh: 1
 --- !u!1 &541912515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,7 +1729,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 9.952423, y: 601.9198}
+  m_AnchoredPosition: {x: 9.952423, y: 1543}
   m_SizeDelta: {x: -770, y: -1232.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &541912517
@@ -1686,8 +1779,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1725,7 +1818,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -11.67778, y: 56.720814, z: -11.677734, w: 56.72074}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3548,7 +3641,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 9.952423, y: -141.48676}
+  m_AnchoredPosition: {x: 9.952423, y: -15}
   m_SizeDelta: {x: -570, y: -835.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1057974300
@@ -3599,8 +3692,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3638,7 +3731,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -13.346008, z: 0, w: -16.682556}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4138,7 +4231,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.5}
+  m_AnchoredPosition: {x: 0, y: 2.65}
   m_SizeDelta: {x: 700, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1150374479
@@ -4435,7 +4528,6 @@ GameObject:
   - component: {fileID: 1273262760}
   - component: {fileID: 1273262759}
   - component: {fileID: 1273262758}
-  - component: {fileID: 1273262761}
   m_Layer: 6
   m_Name: Level 1
   m_TagString: Untagged
@@ -4609,36 +4701,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AssignedLevelData
   AssignedData: {fileID: 11400000, guid: fa6a74a43ddcd9742a253c3df27f36f2, type: 2}
---- !u!114 &1273262761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273262752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60b19e8a082c23c48909ac28cd3d604d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelMenu
-  LevelButtons:
-  - {fileID: 1273262754}
-  - {fileID: 414026611}
-  - {fileID: 760223139}
-  - {fileID: 1105075328}
-  _TemporaryLevelData: []
-  _descriptionPanel: {fileID: 0}
-  _descriptionPanelRect: {fileID: 0}
-  _panelHiddenPosY: 0
-  _panelShownPosY: 0
-  _panelTweenDuration: 0
-  _levelNameText: {fileID: 0}
-  _descriptionText: {fileID: 0}
-  _minimumScoreText: {fileID: 0}
-  _playerScoreText: {fileID: 0}
-  _starRating: {fileID: 0}
-  _proceedButton: {fileID: 0}
-  _closeButton: {fileID: 0}
 --- !u!1 &1282176338
 GameObject:
   m_ObjectHideFlags: 0
@@ -5901,14 +5963,15 @@ RectTransform:
   m_LocalScale: {x: 0.00417, y: 0.00417, z: 0.00417}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 536584057}
   - {fileID: 541912516}
   - {fileID: 1057974299}
   m_Father: {fileID: 1121378624}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -2.05}
-  m_SizeDelta: {x: 1000, y: 1335.6}
+  m_AnchoredPosition: {x: 0, y: -1.88}
+  m_SizeDelta: {x: 1000, y: 1400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1740867061
 MonoBehaviour:
