@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   Rounds: 5
   MovesPerRound: 10
-  MaxTimeInSeconds: 10
+  MaxTimeInSeconds: 240
   RequiredPoints: 2500
   Description: This is the description for level one's illness.
   StartingAnimation: {fileID: 32900000, guid: 4d9d9ab40d8371343b664f9e966c4054, type: 3}
