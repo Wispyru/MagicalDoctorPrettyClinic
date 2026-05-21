@@ -19,7 +19,7 @@ public class MedicineDrag : MonoBehaviour
 
     private void Start()
     {
-        _tileSwapping = FindFirstObjectByType<GridTileSwapping>();
+        _tileSwapping = FindAnyObjectByType<GridTileSwapping>();
         _select = GetComponent<MedicineSelect>();
         _preview = GetComponent<MedicinePreview>();
         _originalPosition = transform.position;
@@ -33,7 +33,7 @@ public class MedicineDrag : MonoBehaviour
 
     public Vector3 GetAuthorativePosition()
     {
-        GridGeneration grid = FindFirstObjectByType<GridGeneration>();
+        GridGeneration grid = FindAnyObjectByType<GridGeneration>();
         if (grid != null)
             return grid.GetWorldPosition(_select.Position.x, _select.Position.y);
         return _originalPosition;
@@ -41,7 +41,7 @@ public class MedicineDrag : MonoBehaviour
 
     public void ResetToCurrentPosition()
     {
-        GridGeneration grid = FindFirstObjectByType<GridGeneration>();
+        GridGeneration grid = FindAnyObjectByType<GridGeneration>();
         if (grid != null)
             _originalPosition = grid.GetWorldPosition(_select.Position.x, _select.Position.y);
         else
@@ -58,7 +58,7 @@ public class MedicineDrag : MonoBehaviour
         _isDragging = false;
         _dragStartWorldPos = GetMouseWorldPos();
 
-        GridGeneration grid = FindFirstObjectByType<GridGeneration>();
+        GridGeneration grid = FindAnyObjectByType<GridGeneration>();
         if (grid != null)
             _originalPosition = grid.GetWorldPosition(_select.Position.x, _select.Position.y);
         else
@@ -194,7 +194,7 @@ public class MedicineDrag : MonoBehaviour
 
         Vector2Int targetGridPos = _select.Position + gridDirection;
 
-        foreach (MedicineSelect tile in FindObjectsByType<MedicineSelect>(FindObjectsSortMode.None))
+        foreach (MedicineSelect tile in FindObjectsByType<MedicineSelect>(FindObjectsInactive.Exclude))
         {
             if (tile != _select && tile.Position == targetGridPos)
                 return tile;
@@ -205,7 +205,7 @@ public class MedicineDrag : MonoBehaviour
 
     private float GetGridSpacing()
     {
-        foreach (MedicineSelect tile in FindObjectsByType<MedicineSelect>(FindObjectsSortMode.None))
+        foreach (MedicineSelect tile in FindObjectsByType<MedicineSelect>(FindObjectsInactive.Exclude))
         {
             if (tile == _select) continue;
             Vector2Int delta = tile.Position - _select.Position;

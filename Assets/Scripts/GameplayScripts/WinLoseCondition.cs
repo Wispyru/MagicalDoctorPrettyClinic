@@ -1,9 +1,19 @@
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 public class WinLoseCondition : MonoBehaviour
 {
-    private float WaitForScreenSec = 3f;
+    private float _waitForScreenSec = 3f;
+    private VideoPlayer _animationPlayer;
+
+    [SerializeField]
+    private GameObject _videoPlayerHolder;
+
+    private void Start()
+    {
+        _animationPlayer = _videoPlayerHolder.GetComponent<VideoPlayer>();
+    }
 
     public void CheckForCurrentTime()
     {
@@ -21,27 +31,20 @@ public class WinLoseCondition : MonoBehaviour
     {
         if (GameData.CurrentPoints < GameData.CurrentLevel.RequiredPoints)
         {
-            StartCoroutine(PlayLoseAnimation());
+            StartCoroutine(EndLevelAnimations(GameData.CurrentLoseAnimation));
         }
 
         if (GameData.CurrentPoints >= GameData.CurrentLevel.RequiredPoints)
         {
-            StartCoroutine(PlayWinAnimation());
+            StartCoroutine(EndLevelAnimations(GameData.CurrentWinAnimation));
         }
     }
 
-    private IEnumerator PlayWinAnimation()
+    private IEnumerator EndLevelAnimations(VideoClip ClipToPlay)
     {
-        //TODO: Play animations
-        yield return new WaitForSeconds(WaitForScreenSec);
-        //TODO: Swap to WinScreen
+        //TOPlay animations
+        yield return new WaitForSeconds(_waitForScreenSec);
+        SceneManager.LoadScene(3);
     }
 
-    private IEnumerator PlayLoseAnimation()
-    {
-        //TODO: Play animations
-        yield return new WaitForSeconds(WaitForScreenSec);
-        //TODO: Swap to losingScreen
-
-    }
 }

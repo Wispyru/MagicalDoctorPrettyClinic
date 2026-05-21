@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Video;
 
 public class GameData
 {
@@ -14,6 +15,12 @@ public class GameData
     public static int CurrentMoves;
     public static int CurrentComboCount;
     public static bool IsComboActive;
+
+    public static VideoClip CurrentStartingAnimation;
+    public static VideoClip CurrentIdleAnimation;
+    public static VideoClip CurrentAttackAnimation;
+    public static VideoClip CurrentWinAnimation;
+    public static VideoClip CurrentLoseAnimation;
 
     // Score per medicine type
     public static int[] ScorePerType = new int[5];

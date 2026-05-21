@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d2debe15de58d574bbb3fd912dd1ebaa
+guid: 53d793895c373ea46b92c5863becd983
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1099226531044006708
-    second: EHBO_kit3_0
+      213: 4797657061680543116
+    second: match_icons_GROEN_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EHBO_kit3_0
+      name: match_icons_GROEN_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 140
-        height: 122
+        height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cc4ef614b43ceb0f0800000000000000
-      internalID: -1099226531044006708
+      spriteID: c85fc93bda3b49240800000000000000
+      internalID: 4797657061680543116
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      EHBO_kit3_0: -1099226531044006708
+      match_icons_GROEN_0: 4797657061680543116
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
