@@ -1,4 +1,3 @@
-// MainMenuAnimation.cs
 using DG.Tweening;
 using System.Threading.Tasks;
 using UnityEngine;
