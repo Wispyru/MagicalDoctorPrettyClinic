@@ -4,8 +4,6 @@ using UnityEngine.UI;
 public class StarRating : MonoBehaviour
 {
     [SerializeField] private Image[] _stars; // Array of 3 star images
-    private Color _filledStarColor = Color.yellow;
-    private Color _emptyStarColor = Color.gray;
     [SerializeField] private Sprite _emptyStarSprite;
     [SerializeField] private Sprite _filledStarSprite;
 
