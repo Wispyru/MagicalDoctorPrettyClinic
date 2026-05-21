@@ -1,24 +1,16 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-
 public class GameUI : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI[] _scoreTexts;
 
     [SerializeField]
-    private Image[] _scoreIcons;
-
-    [SerializeField]
     private TextMeshProUGUI _comboText;
 
     [SerializeField]
     private TextMeshProUGUI _totalPointsText;
-
-    [SerializeField]
-    private Sprite[] _medicineSprites;
 
     [SerializeField]
     private float _comboFadeDelay = 3f;
@@ -30,20 +22,7 @@ public class GameUI : MonoBehaviour
 
     private void Start()
     {
-        SetupScoreIcons();
         ResetComboText();
-    }
-
-    /// <summary>
-    /// Assigns the correct medicine sprite to each score icon.
-    /// </summary>
-    private void SetupScoreIcons()
-    {
-        for (int i = 0; i < _scoreIcons.Length; i++)
-        {
-            if (i < _medicineSprites.Length)
-                _scoreIcons[i].sprite = _medicineSprites[i];
-        }
     }
 
     /// <summary>
