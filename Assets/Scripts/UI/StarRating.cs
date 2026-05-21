@@ -41,7 +41,7 @@ public class StarRating : MonoBehaviour
     {
         foreach (Image star in _stars)
         {
-            star.color = _emptyStarColor;
+            star.sprite = _emptyStarSprite;
         }
     }
 }
