@@ -1,4 +1,6 @@
 # Magical Doctor - Pretty Clinic
+
+## Who made what?
 Eliza:
   * [Grid Generation](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#grid-generation)
   * [Grid Tile Swapping](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#grid-tile-swapping)
@@ -47,6 +49,8 @@ Ruben:
   * [Illness Dex Navigation](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#illness-dex-navigation)
 
 ---
+
+## Links to all pages
 
 |Links|Description|
 |-----|-----|
