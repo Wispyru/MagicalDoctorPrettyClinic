@@ -1,5 +1,11 @@
 # Magical Doctor - Pretty Clinic
 
+## Roles in the team:
+* Eliza - Lead Developer - Checks pull requests, ensures code is clean
+* Kees - Scrum Master - makes notes, Takes care of stand up and stand down
+* Charlie - Lead Artist - Ensures art keeps same style, approves art
+* Zico - Product Owner - contact with customer
+
 ## Who made what?
 Eliza:
   * [Grid Generation](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#grid-generation)
