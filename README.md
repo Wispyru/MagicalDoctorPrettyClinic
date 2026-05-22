@@ -46,6 +46,7 @@ Ruben:
   * [Panel Slide Animation](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#panel-slide-animation)
   * [Illness Dex Navigation](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#illness-dex-navigation)
 
+---
 
 |Links|Description|
 |-----|-----|
