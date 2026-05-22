@@ -32,7 +32,6 @@ Sepp:
   * [Star Rating](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#star-rating)
   * [Yokai Data](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#yokai-data)
   * [Debug Level System](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#debug-level-system)
-  *
 
 Ruben:
   * [Level Button Animation](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#level-button-animation)
