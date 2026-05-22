@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0aca041cc52d4c44b466663e4c20f04, type: 3}
   m_Name: Level4
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  Rounds: 2
+  Rounds: 5
   MovesPerRound: 10
-  MaxTimeInSeconds: 23
+  MaxTimeInSeconds: 240
   RequiredPoints: 2500
   Description: This is the description for level four's illness.
   StartingAnimation: {fileID: 32900000, guid: ee4f92fde13c05642b53a29c082cc52d, type: 3}

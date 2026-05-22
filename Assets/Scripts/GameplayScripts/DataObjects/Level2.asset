@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0aca041cc52d4c44b466663e4c20f04, type: 3}
   m_Name: Level2
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  Rounds: 8
+  Rounds: 5
   MovesPerRound: 10
-  MaxTimeInSeconds: 12
-  RequiredPoints: 200
+  MaxTimeInSeconds: 300
+  RequiredPoints: 2000
   Description: This is the description for level two''s illness.
   StartingAnimation: {fileID: 32900000, guid: 114729822b8e6cc4b8f3da07fdb37b71, type: 3}
   IdleAnimation: {fileID: 32900000, guid: 674b918c1437f9347a933d46571e01e8, type: 3}
