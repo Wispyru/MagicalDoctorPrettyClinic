@@ -1,30 +1,51 @@
-# VoorbeeldExamenRepo
-Een voorbeeld repository voor het examenwerk
+# Magical Doctor - Pretty Clinic
+Eliza:
+  * [Grid Generation](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#grid-generation)
+  * [Grid Tile Swapping](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#grid-tile-swapping)
+  * [Medicine Match](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#medicine-match)
+  * [Medicine Data](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#medicine-data)
+  * [Medicine Select](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#medicine-select)
+  * [Medicine Type](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#medicine-type)
+  * [Game Data](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#game-data)
+  * [Swap Scene](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#swap-scene)
+  * [Level Data Loading](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#level-data-loading)
+  * [Gameplay Timer](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#GameplayTimer)
+  * [Swap Scene](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#SwapScene)
 
-In deze repository vind je de informatie over het examen project.
+Kees:
+  * [Grid Generation](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#grid-generation)
+  * [Grid Tile Swapping](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#grid-tile-swapping)
+  * [Medicine Select](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#medicine-select)
+  * [Game-UI](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#game-ui)
+  * [Pause Menu](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#pause-menu)
+  * [Volume Settings](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#volume-settings)
+  * [Game Data](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#game-data)
+  * [Combo System](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#combo-system)
 
-Omschrijf de examenopdracht evt de klant en wat het doel voor de klant is.
-Omschrijf ook beknopt wat het idee van je game is. 
-Een complete en uitgebreide beschrijving komt in het functioneel ontwerp (onderdeel van de [wiki](https://github.com/erwinhenraat/VoorbeeldExamenRepo/wiki))
+Sepp:
+  * [Grid Generation](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#grid-generation)
+  * [Grid Tile Swapping](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#grid-tile-swapping)
+  * [Medicine Select](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#medicine-select)
+  * [Medicine Drag](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#medicine-drag)
+  * [Medicine Preview](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#medicine-preview)
+  * [Level Menu](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#level-menu)
+  * [Star Rating](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#star-rating)
+  * [Yokai Data](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#yokai-data)
+  * [Debug Level System](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#debug-level-system)
+  *
 
-# Geproduceerde Game Onderdelen
-
-Geef per teammember aan welke game onderdelen je hebt geproduceerd. Doe dit met behulp van omschrijvingen visual sheets en screenshots.
-Maak ook een overzicht van alle onderdelen met een link naar de map waarin deze terug te vinden zijn.
-
-Bijv..
-
-Student X:
-  * [Wave System](https://github.com/erwinhenraat/VoorbeeldExamenRepo/tree/master/src/some)
-  * [Some other mechanic X](https://github.com/erwinhenraat/VoorbeeldExamenRepo/tree/master/src/mechanic_x)
-  * [Some other mechanic Y](https://github.com/erwinhenraat/VoorbeeldExamenRepo/tree/master/src/mechanic_y)
-Student Y:
-  * Water Shader
-  * [Some textured and rigged model](https://github.com/erwinhenraat/VoorbeeldExamenRepo/tree/master/assets/monsters)
-
-Student Z:
-  * [Some beautifull script](https://github.com/erwinhenraat/VoorbeeldExamenRepo/tree/master/src/beautifull)
-  * Some other Game object
+Ruben:
+  * [Level Button Animation](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#level-button-animation)
+  * [Main Menu Animation](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#main-menu-animation)
+  * [Pause Menu](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#pause-menu)
+  * [Audio Manager](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#audio-manager)
+  * [Volume Settings](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#volume-settings)
+  * [UI Sound](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#ui-sound)
+  * [Illness Dex](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#illness-dex)
+  * [Illness Detail](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#illness-detail)
+  * [Illness Data](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#illness-data)
+  * [Panel Slide Animation](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#panel-slide-animation)
+  * [Illness Dex Navigation](https://github.com/Wispyru/MagicalDoctorPrettyClinic/wiki/Full-code-documentation#illness-dex-navigation)
 
 
 ## Wave System by Student X
