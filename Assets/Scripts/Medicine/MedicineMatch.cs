@@ -14,7 +14,9 @@ public class MedicineMatch : MonoBehaviour
     private int _matchComboCount;
     private Coroutine _comboTimerCoroutine;
     private float _comboTimeRemaining;
-
+    private WinLoseCondition _winLoseCondition;
+    private PlayAnimation _playAnimation;  
+    
     private const int _maxComboMultiplier = 5;
 
     private void Start()
@@ -22,7 +24,8 @@ public class MedicineMatch : MonoBehaviour
         _gridGeneration = GetComponent<GridGeneration>();
         _gridCascade = GetComponent<GridCascade>();
         _gameUI = FindAnyObjectByType<GameUI>();
-
+        _winLoseCondition = FindAnyObjectByType<WinLoseCondition>();
+        _playAnimation = FindAnyObjectByType<PlayAnimation>();
         _matchComboCount = 1;
     }
 
@@ -56,6 +59,9 @@ public class MedicineMatch : MonoBehaviour
             UpdateScoreForType(currentData.Type, points);
 
             MatchDestroy(matches);
+
+            _playAnimation?.PlayAttackAnimation();
+            _winLoseCondition.CheckForOutOfMoves();
 
             _gameUI.UpdateUI();
             return true;
